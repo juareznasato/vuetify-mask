@@ -1,23 +1,8 @@
 # vuetify-mask
 
-## Project setup
+## Project
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+Docs in construction...
 ```
 
 ### Customize configuration
