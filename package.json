@@ -1,0 +1,50 @@
+{
+  "name": "vuetify-mask",
+  "version": "0.1.0",
+  "description": "Mask component to vuetify 2",
+  "private": false,
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "main": "index.js",
+  "author": {
+    "name": "Juarez Nasato",
+    "email": "juareznasato@gmail.com"
+  },
+  "keywords": [
+    "vuejs",
+    "vuetify",
+    "v-text-field",
+    "mask",
+    "number",
+    "money",
+    "integer",
+    "datetime",
+    "decimal",
+    "percent",
+    "cpf",
+    "cnpj",
+    "cep"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juareznasato/vuetify-mask.git"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve --port 8081",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "devDependencies": {
+    "@mdi/font": "^5.3.45",
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^1.19.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
