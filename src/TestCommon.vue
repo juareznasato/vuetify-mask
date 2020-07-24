@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field-generic
+    <v-text-field-common
       v-model="value"
       v-bind:label="label"
       v-bind:properties="properties"
@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import Generic from "@/components/Generic.vue";
+import Common from "@/components/Common.vue";
 
 export default {
   components: {
-    "v-text-field-generic": Generic,
+    "v-text-field-common": Common,
   },
   data: () => ({
     value: "23-A568-B953-356",            // 1.23 or "1.23" or "" or null
-    label: "Generic",
+    label: "Common",
     properties: {
       prefix: "",
       suffix: "",
