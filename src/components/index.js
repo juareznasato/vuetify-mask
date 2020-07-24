@@ -5,7 +5,7 @@ import DateTime from "./DateTime.vue";
 import Cpf from "./Cpf.vue";
 import Cnpj from "./Cnpj.vue";
 import Cep from "./Cep.vue";
-import Generic from "./Generic.vue";
+import Common from "./Common.vue";
 
 function install(Vue) {
   Vue.component("v-text-field-money", Money);
@@ -15,7 +15,7 @@ function install(Vue) {
   Vue.component("v-text-field-cpf", Cpf);
   Vue.component("v-text-field-cnpj", Cnpj);
   Vue.component("v-text-field-cep", Cep);
-  Vue.component("v-text-field-generic", Generic);
+  Vue.component("v-text-field-common", Common);
 }
 
 export default install;
