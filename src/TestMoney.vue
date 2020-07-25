@@ -3,14 +3,27 @@
     <v-text-field-money
       v-model="value"
       v-bind:label="label"
-      v-bind:properties="properties"
-      v-bind:options="options"
+      v-bind:properties="{
+        prefix: 'R$',
+        readonly: false,
+        disabled: disabled,
+        outlined: false,
+        clearable: true,
+        placeholder: ' ',
+      }"
+      v-bind:options="{
+        humanMask: '###.###.##0,00',
+        machineMask: '########0.00',
+        empty: null,
+      }"
+      v-bind:focus="focus"
+      v-on:focus="focus = false"
     />
-    v-model: {{ value }}
-    <br />
-    v-model null: {{ value === null ? "null" : "not null" }}
-    <br />
-    v-model empty: {{ value === "" ? "empty" : "not empty" }}
+    v-model: {{ (value !== null && value !== "") ? value : (value === null ? "null" : value === "" ? "''" : "") }}
+    <v-btn v-on:click="focus = true">Focus</v-btn>
+    <v-btn v-on:click="disabled = !disabled">{{
+      disabled ? "Enabled" : "Disabled"
+    }}</v-btn>
   </div>
 </template>
 
@@ -22,25 +35,10 @@ export default {
     "v-text-field-money": Money,
   },
   data: () => ({
-    value: "123456789.00",            // 1.23 or "1.23" or "" or null
+    value: "123456789.00", // 1.23 or "1.23" or "" or null
     label: "Money",
-    properties: {
-      prefix: "R$",
-      suffix: "",
-      readonly: false,
-      disabled: false,
-      outlined: true,
-      clearable: true,
-      placeholder: " ",
-      // ...
-      // ...
-      // You can put other v-text-field properties here
-    },
-    options: {
-      humanMask: "###.###.##0,00",    // Formated value in v-text-field
-      machineMask: "########0.00",  // Formated value in v-model
-      empty: null,                    // v-model value when v-text-field is empty. You can use "0" or "" or null or other.
-    },
+    focus: false,
+    disabled: false,
   }),
 };
 </script>

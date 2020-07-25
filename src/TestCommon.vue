@@ -6,12 +6,7 @@
       v-bind:properties="properties"
       v-bind:options="options"
     />
-    v-model: {{ value }}
-    <br />
-    v-model null: {{ value === null ? "null" : "not null" }}
-    <br />
-    v-model empty: {{ value === "" ? "empty" : "not empty" }}
-    <br />
+    v-model: {{ (value !== null && value !== "") ? value : (value === null ? "null" : value === "" ? "''" : "") }}
   </div>
 </template>
 
@@ -30,7 +25,7 @@ export default {
       suffix: "",
       readonly: false,
       disabled: false,
-      outlined: true,
+      outlined: false,
       clearable: true,
       placeholder: " ",
       // ...

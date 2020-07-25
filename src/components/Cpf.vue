@@ -13,6 +13,7 @@
       v-on:keydown="$emit('keydown')"
       v-on:mousedown="$emit('mousedown')"
       v-on:mouseup="$emit('mouseup')"
+      ref="ref"
     ></v-text-field>
   </div>
 </template>

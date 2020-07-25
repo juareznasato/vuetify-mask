@@ -6,12 +6,7 @@
       v-bind:properties="properties"
       v-bind:options="options"
     />
-    v-model: {{ value }}
-    <br />
-    v-model null: {{ value === null ? "null" : "not null" }}
-    <br />
-    v-model empty: {{ value === "" ? "empty" : "not empty" }}
-    <br />
+    v-model: {{ (value !== null && value !== "") ? value : (value === null ? "null" : value === "" ? "''" : "") }}
   </div>
 </template>
 
@@ -26,8 +21,6 @@ export default {
     value: "97702036028",            // 123 or "123" or "" or null
     label: "CPF (Brazilian mask)",
     properties: {
-      prefix: "",
-      suffix: "",
       readonly: false,
       disabled: false,
       outlined: true,

@@ -5,17 +5,8 @@
       v-bind:label="label"
       v-bind:properties="properties"
       v-bind:options="options"
-      v-bind:focus="focus"
-      v-on:focus="focus=false"
     />
-    v-model: {{ value }}
-    <br />
-    v-model null: {{ value === null ? "null" : "not null" }}
-    <br />
-    v-model empty: {{ value === "" ? "empty" : "not empty" }}
-    <br />
-    {{ focus }}
-    <v-btn v-on:click="focus=true">Focus</v-btn>
+    v-model: {{ (value !== null && value !== "") ? value : (value === null ? "null" : value === "" ? "''" : "") }}
   </div>
 </template>
 
@@ -29,7 +20,6 @@ export default {
   data: () => ({
     value: "82515260", // 1.23 or "1.23" or "" or null
     label: "CEP (Brazilian mask)",
-    focus: false,
     properties: {
       prefix: "",
       suffix: "",
