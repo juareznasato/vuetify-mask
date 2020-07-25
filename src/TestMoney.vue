@@ -19,7 +19,16 @@
       v-bind:focus="focus"
       v-on:focus="focus = false"
     />
-    v-model: {{ (value !== null && value !== "") ? value : (value === null ? "null" : value === "" ? "''" : "") }}
+    v-model:
+    {{
+      value !== null && value !== ""
+        ? value
+        : value === null
+        ? "null"
+        : value === ""
+        ? "''"
+        : ""
+    }}
     <v-btn v-on:click="focus = true">Focus</v-btn>
     <v-btn v-on:click="disabled = !disabled">{{
       disabled ? "Enabled" : "Disabled"

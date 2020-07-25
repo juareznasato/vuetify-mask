@@ -3,10 +3,30 @@
     <v-text-field-integer
       v-model="value"
       v-bind:label="label"
-      v-bind:properties="properties"
-      v-bind:options="options"
+      v-bind:properties="{
+        readonly: false,
+        disabled: false,
+        outlined: false,
+        clearable: true,
+        placeholder: '',
+      }"
+      v-bind:options="{
+        humanMask: '#########',
+        machineMask: '#########',
+        empty: null,
+        applyAfter: false,
+      }"
     />
-    v-model: {{ (value !== null && value !== "") ? value : (value === null ? "null" : value === "" ? "''" : "") }}
+    v-model:
+    {{
+      value !== null && value !== ""
+        ? value
+        : value === null
+        ? "null"
+        : value === ""
+        ? "''"
+        : ""
+    }}
   </div>
 </template>
 
@@ -18,24 +38,8 @@ export default {
     "v-text-field-integer": Integer,
   },
   data: () => ({
-    value: "123456789",            // 123 or "123" or "" or null
+    value: "123456789", // 123 or "123" or "" or null
     label: "Integer",
-    properties: {
-      readonly: false,
-      disabled: false,
-      outlined: false,
-      clearable: true,
-      placeholder: " ",
-      // ...
-      // ...
-      // You can put other v-text-field properties here
-    },
-    options: {
-      humanMask: "#########",    // Formated value in v-text-field
-      machineMask: "#########",    // Formated value in v-model
-      empty: null,                  // v-model value when v-text-field is empty. You can use "0" or "" or null or other.
-      applyAfter: false,           // Apply the mask only after filling
-    },
   }),
 };
 </script>
