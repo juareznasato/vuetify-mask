@@ -76,7 +76,7 @@ export default {
           this.$nextTick(() => {
             setTimeout(() => {
               this.$refs.ref.focus();
-            }, 500);
+            }, 300);
           });
         }
       },
