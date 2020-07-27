@@ -48,7 +48,7 @@ In theory, you can use any v-text-field property
 
 ## Events
 | Event | value | Description |
-| ------------ | ------------ | ------------ | ------------ |
+| ------------ | ------------ | ------------ |
 | blur | Event | Emitted when the input is blurred |
 | change | any | Emitted when the input is changed by user interaction |
 | click | MouseEvent | Emitted when input is clicked |
