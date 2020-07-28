@@ -18,8 +18,9 @@ The values are formatted in two masks. The first is displayed in the v-text-fiel
 - material design icon (npm install @mdi/font -D --save)
 
 ## Install
-
+```
 __$ npm install vuetify-mask --save__
+```
 
 ## Register
 1- Create a file src/plugins/vuetify-mask.js with:  
