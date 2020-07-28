@@ -12,6 +12,8 @@ function install(Vue) {
   Vue.component("v-text-field-percent", Percent);
   Vue.component("v-text-field-integer", Integer);
   Vue.component("v-text-field-datetime", DateTime);
+  Vue.component("v-text-field-creditcard", Common);
+  Vue.component("v-text-field-phonenumber", Common);
   Vue.component("v-text-field-common", Common);
   Vue.component("v-text-field-cpf", Cpf);
   Vue.component("v-text-field-cnpj", Cnpj);

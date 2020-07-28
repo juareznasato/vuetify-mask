@@ -201,6 +201,7 @@ export default {
 </script>
 ```
 ### - Common  (v-text-field-common)
+&nbsp; generic masks
 ```
 <template>
   <div>

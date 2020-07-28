@@ -21,10 +21,13 @@
             <v-text-field-datetime />
           </v-col>
           <v-col cols="4" sm="4" md="4">
-            <v-text-field-common />
+            <v-text-field-creditcard />            
           </v-col>
           <v-col cols="4" sm="4" md="4">
-            
+            <v-text-field-phonenumber />            
+          </v-col>
+          <v-col cols="4" sm="4" md="4">
+            <v-text-field-common />
           </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-cpf />
@@ -46,6 +49,8 @@ import TestMoney from "./TestMoney.vue";
 import TestPercent from "./TestPercent.vue";
 import TestInteger from "./TestInteger.vue";
 import TestDateTime from "./TestDateTime.vue";
+import TestCreditCard from "./TestCreditCard.vue";
+import TestPhoneNumber from "./TestPhoneNumber.vue";
 import TestCommon from "./TestCommon.vue";
 import TestCpf from "./TestCpf.vue";
 import TestCnpj from "./TestCnpj.vue";
@@ -58,6 +63,8 @@ export default {
     "v-text-field-percent": TestPercent,
     "v-text-field-integer": TestInteger,
     "v-text-field-datetime": TestDateTime,
+    "v-text-field-creditcard": TestCreditCard,
+    "v-text-field-phonenumber": TestPhoneNumber,
     "v-text-field-common": TestCommon,
     "v-text-field-cpf": TestCpf,
     "v-text-field-cnpj": TestCnpj,
