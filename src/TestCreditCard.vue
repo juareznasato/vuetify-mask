@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import Common from "@/components/Common.vue";
+import SimpleMask from "@/components/SimpleMask.vue";
 
 export default {
   components: {
-    "v-text-field-creditcard": Common,
+    "v-text-field-creditcard": SimpleMask,
   },
   data: () => ({
     value: "1234432112344321",

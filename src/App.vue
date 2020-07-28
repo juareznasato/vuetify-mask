@@ -27,7 +27,7 @@
             <v-text-field-phonenumber />            
           </v-col>
           <v-col cols="4" sm="4" md="4">
-            <v-text-field-common />
+            <v-text-field-simplemask />
           </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-cpf />
@@ -51,7 +51,7 @@ import TestInteger from "./TestInteger.vue";
 import TestDateTime from "./TestDateTime.vue";
 import TestCreditCard from "./TestCreditCard.vue";
 import TestPhoneNumber from "./TestPhoneNumber.vue";
-import TestCommon from "./TestCommon.vue";
+import TestSimpleMask from "./TestSimpleMask.vue";
 import TestCpf from "./TestCpf.vue";
 import TestCnpj from "./TestCnpj.vue";
 import TestCep from "./TestCep.vue";
@@ -65,7 +65,7 @@ export default {
     "v-text-field-datetime": TestDateTime,
     "v-text-field-creditcard": TestCreditCard,
     "v-text-field-phonenumber": TestPhoneNumber,
-    "v-text-field-common": TestCommon,
+    "v-text-field-simplemask": TestSimpleMask,
     "v-text-field-cpf": TestCpf,
     "v-text-field-cnpj": TestCnpj,
     "v-text-field-cep": TestCep,
