@@ -19,7 +19,7 @@ The values are formatted in two masks. The first is displayed in the v-text-fiel
 
 ## Install
 ```
-__$ npm install vuetify-mask --save__
+$ npm install vuetify-mask --save
 ```
 
 ## Register
