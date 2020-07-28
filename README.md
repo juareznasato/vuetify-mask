@@ -33,7 +33,7 @@ import "./plugins/vuetify-mask.js";
 
 
 ## Properties (v-bind:properties)
-You can use any v-text-field property
+You can add any v-text-field property
 [v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields). 
 
 ## Options (v-bind:options)
@@ -228,6 +228,8 @@ export default {
         alphanumeric: true,
         lowerCase: false,
       }"
+      v-bind:focus="focus"
+      v-on:focus="focus = false"
     />
   </div>
 </template>
@@ -236,6 +238,7 @@ export default {
   data: () => ({
     value: "1234432112344321",
     label: "Credit Card",
+    focus: false,
   }),
 };
 </script>
@@ -265,6 +268,8 @@ export default {
         alphanumeric: true,
         lowerCase: false,
       }"
+      v-bind:focus="focus"
+      v-on:focus="focus = false"
     />
   </div>
 </template>
@@ -274,6 +279,7 @@ export default {
   data: () => ({
     value: "99999999999",
     label: "Phone Number",
+    focus: false,
   }),
 };
 </script>
