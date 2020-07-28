@@ -37,7 +37,7 @@ export default {
     "v-text-field-datetime": DateTime,
   },
   data: () => ({
-    value: "1595386800000", // Timestamp
+    value: "1595386800000", // Milliseconds
     label: "DateTime",
   }),
 };

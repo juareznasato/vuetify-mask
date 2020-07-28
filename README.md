@@ -166,6 +166,7 @@ export default {
 </script>
 ```
 ### - DateTime  (v-text-field-datetime)
+&nbsp; works in milliseconds
 ```
 <template>
   <div>
@@ -192,7 +193,7 @@ export default {
 <script>
 export default {
   data: () => ({
-    value: "1595386800000",    // Timestamp
+    value: "1595386800000",    // Milliseconds
     label: "DateTime",
     focus: false,
   }),
@@ -238,7 +239,8 @@ export default {
 };
 </script>
 ```
-### - CPF  (v-text-field-cpf) brazilian mask
+### - CPF  (v-text-field-cpf)
+&nbsp;brazilian mask
 ```
 <template>
   <div>
@@ -272,7 +274,8 @@ export default {
 };
 </script>
 ```
-### - CNPJ  (v-text-field-cnpj) brazilian mask
+### - CNPJ  (v-text-field-cnpj)
+&nbsp;brazilian mask
 ```
 <template>
   <div>
@@ -305,7 +308,8 @@ export default {
 };
 </script>
 ```
-### - CEP  (v-text-field-cep) brazilian mask
+### - CEP  (v-text-field-cep)
+&nbsp;brazilian mask
 ```
 <template>
   <div>
