@@ -33,18 +33,18 @@ import "./plugins/vuetify-mask.js";
 
 
 ## Properties (v-bind:properties)
-In theory, you can use any v-text-field property
+You can use any v-text-field property
 [v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields). 
 
 ## Options (v-bind:options)
 | Option | Component | Default | Description |
 | ------------ | ------------ | ------------ | ------------ |
-| humanMask | Money, Percent, Integer, DateTime, Common  | | mask that will be applied in the v-text-field |
-| machineMask | Money, Percent, Integer, Common, CPF, CNPJ, CEP | | mask that will be applied in the v-model |
-| empty | Money, Percent, Integer, DateTime, Common, CPF, CNPJ, CEP | "" | Value in v-model when v-text-field is empty. Can be null, "" or other|
-| applyAfter | Integer, Common, CPF, CNPJ, CEP| | The value is masked only after all typing |
-| alphanumeric | Common | false | |
-| lowerCase| Common | false | |
+| humanMask | Money, Percent, Integer, DateTime, SimpleMask  | | mask that will be applied in the v-text-field |
+| machineMask | Money, Percent, Integer, SimpleMask, CPF, CNPJ, CEP | | mask that will be applied in the v-model |
+| empty | Money, Percent, Integer, DateTime, SimpleMask, CPF, CNPJ, CEP | "" | Value in v-model when v-text-field is empty. Can be null, "" or other|
+| applyAfter | Integer, SimpleMask, CPF, CNPJ, CEP| | The value is masked only after all typing |
+| alphanumeric | SimpleMask | false | |
+| lowerCase| SimpleMask | false | |
 
 ## Events
 | Event | value | Description |
@@ -94,6 +94,7 @@ export default {
 };
 </script>
 ```
+
 ### - Percent  (v-text-field-percent)
 ```
 <template>
@@ -130,6 +131,7 @@ export default {
 </script>
 
 ```
+
 ### - Integer  (v-text-field-integer)
 ```
 <template>
@@ -165,6 +167,7 @@ export default {
 };
 </script>
 ```
+
 ### - DateTime  (v-text-field-datetime)
 &nbsp; works in milliseconds
 ```
@@ -200,12 +203,88 @@ export default {
 };
 </script>
 ```
-### - Common  (v-text-field-common)
-&nbsp; generic masks
+
+### - Credit Card  (v-text-field-simplemask)
 ```
 <template>
   <div>
-    <v-text-field-common
+    <v-text-field-simplemask
+      v-model="value"
+      v-bind:label="label"
+      v-bind:properties="{
+        prefix: '',
+        suffix: '',
+        readonly: false,
+        disabled: false,
+        outlined: false,
+        clearable: true,
+        placeholder: '',
+      }"
+      v-bind:options="{
+        humanMask: '#### #### #### ####',
+        machineMask: '################',
+        empty: null,
+        applyAfter: false,
+        alphanumeric: true,
+        lowerCase: false,
+      }"
+    />
+  </div>
+</template>
+<script>
+export default {
+  data: () => ({
+    value: "1234432112344321",
+    label: "Credit Card",
+  }),
+};
+</script>
+```
+
+### - Phone Number  (v-text-field-simplemask)
+```
+<template>
+  <div>
+    <v-text-field-simplemask
+      v-model="value"
+      v-bind:label="label"
+      v-bind:properties="{
+        prefix: '',
+        suffix: '',
+        readonly: false,
+        disabled: false,
+        outlined: false,
+        clearable: true,
+        placeholder: '',
+      }"
+      v-bind:options="{
+        humanMask: '(##) #####-####',
+        machineMask: '###########',
+        empty: null,
+        applyAfter: false,
+        alphanumeric: true,
+        lowerCase: false,
+      }"
+    />
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    value: "99999999999",
+    label: "Phone Number",
+  }),
+};
+</script>
+```
+
+### - Simple Mask  (v-text-field-simplemask)
+&nbsp; You can create your masks.
+```
+<template>
+  <div>
+    <v-text-field-simplemask
       v-model="value"
       v-bind:label="label"
       v-bind:properties="{
@@ -234,12 +313,13 @@ export default {
 export default {
   data: () => ({
     value: "23-A568-B953-356", // "23-A568-B953-356" or "" or null
-    label: "Common",
+    label: "Simple Mask",
     focus: false,
   }),
 };
 </script>
 ```
+
 ### - CPF  (v-text-field-cpf)
 &nbsp;brazilian mask
 ```
@@ -275,6 +355,7 @@ export default {
 };
 </script>
 ```
+
 ### - CNPJ  (v-text-field-cnpj)
 &nbsp;brazilian mask
 ```
@@ -309,6 +390,7 @@ export default {
 };
 </script>
 ```
+
 ### - CEP  (v-text-field-cep)
 &nbsp;brazilian mask
 ```
@@ -343,5 +425,4 @@ export default {
   }),
 };
 </script>
-
 ```

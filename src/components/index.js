@@ -12,9 +12,7 @@ function install(Vue) {
   Vue.component("v-text-field-percent", Percent);
   Vue.component("v-text-field-integer", Integer);
   Vue.component("v-text-field-datetime", DateTime);
-  Vue.component("v-text-field-creditcard", SimpleMask);
-  Vue.component("v-text-field-phonenumber", SimpleMask);
-  Vue.component("v-text-field-common", SimpleMask);
+  Vue.component("v-text-field-simplemask", SimpleMask);
   Vue.component("v-text-field-cpf", Cpf);
   Vue.component("v-text-field-cnpj", Cnpj);
   Vue.component("v-text-field-cep", Cep);

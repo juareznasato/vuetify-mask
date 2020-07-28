@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field-creditcard
+    <v-text-field-simplemask
       v-model="value"
       v-bind:label="label"
       v-bind:properties="{
@@ -39,7 +39,7 @@ import SimpleMask from "@/components/SimpleMask.vue";
 
 export default {
   components: {
-    "v-text-field-creditcard": SimpleMask,
+    "v-text-field-simplemask": SimpleMask,
   },
   data: () => ({
     value: "1234432112344321",
