@@ -1,6 +1,4 @@
 # vuetify-mask
-![Banana](http://cdn.osxdaily.com/wp-content/uploads/2013/07/dancing-banana.gif)
-
 
 ## Project
 
@@ -9,7 +7,7 @@ The values are formatted in two masks. The first is displayed in the v-text-fiel
 
 ## Links
 
-[See Demo here](https://).  
+[See Demo here](https://rzfpe.csb.app/).  
 [GitHub](https://github.com/juareznasato/vuetify-mask).  
 [npm](https://www.npmjs.com/package/vuetify-mask).
 

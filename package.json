@@ -21,6 +21,8 @@
     "datetime",
     "decimal",
     "percent",
+    "phonenumber",
+    "creditcard",
     "cpf",
     "cnpj",
     "cep"
@@ -33,12 +35,6 @@
     "serve": "vue-cli-service serve --port 8081",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "moment": "^2.27.0",
-    "vue": "^2.6.11",
-    "vuetify": "^2.3.4"
   },
   "devDependencies": {
     "@mdi/font": "^5.3.45",
