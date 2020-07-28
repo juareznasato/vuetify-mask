@@ -1,12 +1,10 @@
 # vuetify-mask
 
 ## Project
-
 vuetify-mask is a component for working with some of the main types of masks in the v-text-field.
 The values are formatted in two masks. The first is displayed in the v-text-field and the second in the v-model.
 
 ## Links
-
 [See Demo here](https://rzfpe.csb.app/).  
 [GitHub](https://github.com/juareznasato/vuetify-mask).  
 [npm](https://www.npmjs.com/package/vuetify-mask).
