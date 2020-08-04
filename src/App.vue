@@ -12,6 +12,9 @@
             <v-text-field-money />
           </v-col>
           <v-col cols="4" sm="4" md="4">
+            <v-text-field-money-locale />
+          </v-col>
+          <v-col cols="4" sm="4" md="4">
             <v-text-field-percent />
           </v-col>
           <v-col cols="4" sm="4" md="4">
@@ -50,6 +53,7 @@
 
 <script>
 import TestMoney from "./TestMoney.vue";
+import TestMoneyLocale from "./TestMoneyLocale.vue";
 import TestPercent from "./TestPercent.vue";
 import TestInteger from "./TestInteger.vue";
 import TestDateTime from "./TestDateTime.vue";
@@ -64,6 +68,7 @@ export default {
   name: "app",
   components: {
     "v-text-field-money": TestMoney,
+    "v-text-field-money-locale": TestMoneyLocale,
     "v-text-field-percent": TestPercent,
     "v-text-field-integer": TestInteger,
     "v-text-field-datetime": TestDateTime,
