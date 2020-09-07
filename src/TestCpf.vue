@@ -9,6 +9,8 @@
         outlined: true,
         clearable: true,
         placeholder: '',
+        'append-icon': value ? 'mdi-check-circle' : 'mdi-minus-circle',
+        success: value ? true : false
       }"
       v-bind:options="{
         machineMask: '###########',
@@ -42,3 +44,36 @@ export default {
   }),
 };
 </script>
+
+  // 'append-icon': value ? 'mdi-check-circle' : 'mdi-minus-circle',
+  // success: value ? true : false
+
+  // or
+
+  // v-bind:properties="{
+  //   readonly: false,
+  //   disabled: false,
+  //   outlined: true,
+  //   clearable: true,
+  //   placeholder: '',
+  //   'append-icon': appendIcone(),
+  //   success: success(),
+  //   error: !success()
+  // }"
+
+  // methods: {
+  //   appendIcone() {
+  //     if (this.value) {
+  //       return "mdi-check-circle";
+  //     } else {
+  //       return "mdi-minus-circle";
+  //     }
+  //   },
+  //   success() {
+  //     if (this.value) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  // }
