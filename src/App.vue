@@ -35,8 +35,6 @@
           <v-col cols="4" sm="4" md="4">
           </v-col>
           <v-col cols="4" sm="4" md="4">
-          </v-col>
-          <v-col cols="4" sm="4" md="4">
             <v-text-field-cpf />
           </v-col>
           <v-col cols="4" sm="4" md="4">
