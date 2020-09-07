@@ -9,8 +9,6 @@
         outlined: true,
         clearable: true,
         placeholder: '',
-        'append-icon': value ? 'mdi-check-circle' : 'mdi-minus-circle',
-        success: value ? true : false
       }"
       v-bind:options="{
         machineMask: '###########',
