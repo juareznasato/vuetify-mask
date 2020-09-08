@@ -30,10 +30,6 @@ export default {
       type: String,
       default: "",
     },
-    focus: {
-      type: Boolean,
-      default: false,
-    },
     properties: {
       type: Object,
       default: function() {
@@ -69,20 +65,7 @@ export default {
       },
     },
   },
-  watch: {
-    focus: {
-      handler() {
-        if (this.focus) {
-          this.$nextTick(() => {
-            setTimeout(() => {
-              this.$refs.ref.focus();
-            }, 300);
-          });
-        }
-      },
-      immediate: true,
-    },
-  },
+  watch: {},
   methods: {
     humanFormat: function(value) {
       if (value) {
@@ -193,6 +176,13 @@ export default {
       }
       return false;
     },
+
+    focus() {
+      setTimeout(() => {
+        this.$refs.ref.focus();
+      }, 500);
+    },
+    
   },
 };
 </script>

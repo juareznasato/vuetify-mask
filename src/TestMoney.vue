@@ -16,8 +16,7 @@
         machineMask: '########0.00',
         empty: null,
       }"
-      v-bind:focus="focus"
-      v-on:focus="focus = false"
+      ref="ref"
     />
     v-model:
     {{
@@ -29,7 +28,7 @@
         ? "''"
         : ""
     }}
-    <v-btn v-on:click="focus = true">Focus</v-btn>
+    <v-btn v-on:click="$refs.ref.focus()">Focus</v-btn>
     <v-btn v-on:click="disabled = !disabled">{{
       disabled ? "Enabled" : "Disabled"
     }}</v-btn>
@@ -46,7 +45,6 @@ export default {
   data: () => ({
     value: "123456789.00", // 1.23 or "1.23" or "" or null
     label: "Money",
-    focus: false,
     disabled: false,
   }),
 };

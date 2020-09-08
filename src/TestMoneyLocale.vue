@@ -17,8 +17,7 @@
         precision: 6,
         empty: null,
       }"
-      v-bind:focus="focus"
-      v-on:focus="focus = false"
+      ref="ref"
     />
     v-model:
     {{
@@ -30,10 +29,8 @@
         ? "''"
         : ""
     }}
-    <v-btn v-on:click="focus = true">Focus</v-btn>
-    <v-btn v-on:click="disabled = !disabled">{{
-      disabled ? "Enabled" : "Disabled"
-    }}</v-btn>
+    <v-btn v-on:click="$refs.ref.focus()">Focus</v-btn>
+    <v-btn v-on:click="disabled = !disabled">{{ disabled ? "Enabled" : "Disabled" }}</v-btn>
   </div>
 </template>
 
@@ -47,7 +44,6 @@ export default {
   data: () => ({
     value: 123456789.123000, // 1.23 or "1.23" or "" or null
     label: "Money Locale",
-    focus: false,
     disabled: false,
   }),
 };

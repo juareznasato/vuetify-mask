@@ -5,8 +5,8 @@
       v-bind:label="label"
       v-bind="properties"
       v-bind:maxlength="humanMask.length"
-      v-bind:append-icon="(options.applyAfter && value) ? 'mdi-check-circle' : ''"
-      v-bind:success="(options.applyAfter && value) ? true : false"
+      v-bind:append-icon="options.applyAfter && value ? 'mdi-check-circle' : ''"
+      v-bind:success="options.applyAfter && value ? true : false"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
       v-on:change="$emit('change')"
@@ -31,10 +31,6 @@ export default {
     label: {
       type: String,
       default: "",
-    },
-    focus: {
-      type: Boolean,
-      default: false,
     },
     properties: {
       type: Object,
@@ -70,20 +66,7 @@ export default {
       },
     },
   },
-  watch: {
-    focus: {
-      handler() {
-        if (this.focus) {
-          this.$nextTick(() => {
-            setTimeout(() => {
-              this.$refs.ref.focus();
-            }, 300);
-          });
-        }
-      },
-      immediate: true,
-    },
-  },
+  watch: {},
   methods: {
     humanFormat: function(value) {
       if (value) {
@@ -173,6 +156,12 @@ export default {
         result = true;
       }
       return result;
+    },
+
+    focus() {
+      setTimeout(() => {
+        this.$refs.ref.focus();
+      }, 500);
     },
 
     validateCpf: function(cpf) {

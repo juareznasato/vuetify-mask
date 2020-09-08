@@ -34,10 +34,6 @@ export default {
       type: String,
       default: "",
     },
-    focus: {
-      type: Boolean,
-      default: false,
-    },
     properties: {
       type: Object,
       default: function() {
@@ -70,18 +66,6 @@ export default {
     },
   },
   watch: {
-    focus: {
-      handler() {
-        if (this.focus) {
-          this.$nextTick(() => {
-            setTimeout(() => {
-              this.$refs.ref.focus();
-            }, 300);
-          });
-        }
-      },
-      immediate: true,
-    },
   },
   methods: {
     humanFormat: function(value) {
@@ -199,6 +183,13 @@ export default {
     toDate: function(value) {
       return new Date(value); // Return String
     },
+
+    focus() {
+      setTimeout(() => {
+        this.$refs.ref.focus();
+      }, 500);
+    },
+
   },
 };
 </script>
