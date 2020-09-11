@@ -10,7 +10,7 @@
         placeholder: '',
       }"
       v-bind:options="{
-        machineMask: '########',
+        outputMask: '########',
         empty: null,
         applyAfter: true,
       }"

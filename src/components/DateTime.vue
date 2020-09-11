@@ -4,7 +4,7 @@
       v-model="cmpValue"
       v-bind:label="label"
       v-bind="properties"
-      v-bind:maxlength="options.humanMask.length"
+      v-bind:maxlength="options.inputMask.length"
       v-bind:append-icon="(value) ? 'mdi-check-circle' : ''"
       v-bind:success="(value) ? true : false"
       v-on:keypress="keyPress"
@@ -44,7 +44,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          humanMask: "YYYY-MM-DD HH:mm:ss",
+          inputMask: "YYYY-MM-DD HH:mm:ss",
           empty: "",
         };
       },
@@ -71,7 +71,7 @@ export default {
     humanFormat: function(value) {
       if (value) {
         value = moment(this.toDate(this.toInteger(value))).format(
-          this.options.humanMask
+          this.options.inputMask
         );
       } else {
         value = this.options.empty;
@@ -81,15 +81,15 @@ export default {
 
     machineFormat(value) {
       if (value) {
-        value = this.formatValue(value, this.options.humanMask);
+        value = this.formatValue(value, this.options.inputMask);
         if (value === "") {
           value = this.options.empty;
         } else {
           // Apply the mask only only after filling
-          if (value.length !== this.options.humanMask.length) {
+          if (value.length !== this.options.inputMask.length) {
             value = this.options.empty;
           } else {
-            let stringDate = moment(value, this.options.humanMask).format(
+            let stringDate = moment(value, this.options.inputMask).format(
               "YYYY-MM-DD HH:mm:ss"
             );
             value = this.toMillisecond(stringDate);

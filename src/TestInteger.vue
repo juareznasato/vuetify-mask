@@ -11,8 +11,8 @@
         placeholder: '',
       }"
       v-bind:options="{
-        humanMask: '#########',
-        machineMask: '#########',
+        inputMask: '#########',
+        outputMask: '#########',
         empty: null,
         applyAfter: false,
       }"

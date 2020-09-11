@@ -12,8 +12,8 @@
         placeholder: ' ',
       }"
       v-bind:options="{
-        humanMask: '###.###.##0,00',
-        machineMask: '########0.00',
+        inputMask: '###.###.##0,00',
+        outputMask: '########0.00',
         empty: null,
       }"
       ref="ref"

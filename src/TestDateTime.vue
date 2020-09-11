@@ -12,7 +12,7 @@
         'prepend-icon': 'mdi-calendar',
       }"
       v-bind:options="{
-        humanMask: 'YYYY-MM-DD HH:mm:ss',
+        inputMask: 'YYYY-MM-DD HH:mm:ss',
         empty: null,
       }"
     />

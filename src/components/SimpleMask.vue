@@ -4,7 +4,7 @@
       v-model="cmpValue"
       v-bind:label="label"
       v-bind="properties"
-      v-bind:maxlength="options.humanMask.length"
+      v-bind:maxlength="options.inputMask.length"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
       v-on:change="$emit('change')"
@@ -40,8 +40,8 @@ export default {
       type: Object,
       default: function() {
         return {
-          humanMask: "#########",
-          machineMask: "#########",
+          inputMask: "#########",
+          outputMask: "#########",
           empty: "", // v-model value when v-text-field is empty. You can use "0" or "" or null or other.
           applyAfter: true, // Apply the mask only after filling
           alphanumeric: false,
@@ -69,7 +69,7 @@ export default {
   methods: {
     humanFormat: function(value) {
       if (value) {
-        value = this.formatValue(value, this.options.humanMask);
+        value = this.formatValue(value, this.options.inputMask);
       } else {
         value = this.options.empty;
       }
@@ -78,7 +78,7 @@ export default {
 
     machineFormat(value) {
       if (value) {
-        value = this.formatValue(value, this.options.machineMask);
+        value = this.formatValue(value, this.options.outputMask);
         if (value === "") {
           value = this.options.empty;
         }
@@ -90,7 +90,7 @@ export default {
         }
         // Apply the mask only after filling
         if (this.options.applyAfter) {
-          if (value.length !== this.options.machineMask.length) {
+          if (value.length !== this.options.outputMask.length) {
             value = this.options.empty;
           } else {
             // Event sended after filling the mask

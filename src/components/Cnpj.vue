@@ -4,7 +4,7 @@
       v-model="cmpValue"
       v-bind:label="label"
       v-bind="properties"
-      v-bind:maxlength="humanMask.length"
+      v-bind:maxlength="inputMask.length"
       v-bind:append-icon="options.applyAfter && value ? 'mdi-check-circle' : ''"
       v-bind:success="options.applyAfter && value ? true : false"
       v-on:keypress="keyPress"
@@ -42,7 +42,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          machineMask: "##############",
+          outputMask: "##############",
           empty: "",
           applyAfter: false,
         };
@@ -50,7 +50,7 @@ export default {
     },
   },
   data: () => ({
-    humanMask: "##.###.###/####-##",
+    inputMask: "##.###.###/####-##",
   }),
   /*
    v-model="cmpValue": Dessa forma, ao digitar, o valor é atualizado automaticamente no componente pai.
@@ -70,7 +70,7 @@ export default {
   methods: {
     humanFormat: function(value) {
       if (value) {
-        value = this.formatValue(value, this.humanMask);
+        value = this.formatValue(value, this.inputMask);
       } else {
         value = this.options.empty;
       }
@@ -79,13 +79,13 @@ export default {
 
     machineFormat(value) {
       if (value) {
-        value = this.formatValue(value, this.options.machineMask);
+        value = this.formatValue(value, this.options.outputMask);
         if (value === "") {
           value = this.options.empty;
         }
         // Apply the mask only only after filling
         if (this.options.applyAfter) {
-          if (value.length !== this.options.machineMask.length) {
+          if (value.length !== this.options.outputMask.length) {
             value = this.options.empty;
           } else {
             if (!this.validateCnpj(value)) {

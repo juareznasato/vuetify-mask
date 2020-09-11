@@ -38,8 +38,8 @@ You can add any v-text-field property
 ## Options (v-bind:options)
 | Option | Component | Default | Description |
 | ------------ | ------------ | ------------ | ------------ |
-| humanMask | Money, Percent, Integer, DateTime, SimpleMask  | | mask that will be applied in the v-text-field |
-| machineMask | Money, Percent, Integer, SimpleMask, CPF, CNPJ, CEP | | mask that will be applied in the v-model |
+| inputMask | Money, Percent, Integer, DateTime, SimpleMask  | | mask that will be applied in the v-text-field |
+| outputMask | Money, Percent, Integer, SimpleMask, CPF, CNPJ, CEP | | mask that will be applied in the v-model |
 | empty | Money, Percent, Integer, DateTime, SimpleMask, CPF, CNPJ, CEP | "" | Value in v-model when v-text-field is empty. Can be null, "" or other|
 | applyAfter | Integer, SimpleMask, CPF, CNPJ, CEP| | The value is masked only after all typing |
 | alphanumeric | SimpleMask | false | |
@@ -74,8 +74,8 @@ You can add any v-text-field property
         placeholder: ' ',
       }"
       v-bind:options="{
-        humanMask: '###.###.##0,00',
-        machineMask: '########0.00',
+        inputMask: '###.###.##0,00',
+        outputMask: '########0.00',
         empty: null,
       }"
       v-bind:focus="focus"
@@ -110,8 +110,8 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        humanMask: '#00,00',
-        machineMask: '#00.00',
+        inputMask: '#00,00',
+        outputMask: '#00.00',
         empty: null,
       }"
       v-bind:focus="focus"
@@ -146,8 +146,8 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        humanMask: '#########',
-        machineMask: '#########',
+        inputMask: '#########',
+        outputMask: '#########',
         empty: null,
         applyAfter: false,
       }"
@@ -184,7 +184,7 @@ export default {
         'prepend-icon': 'mdi-calendar',
       }"
       v-bind:options="{
-        humanMask: 'YYYY-MM-DD HH:mm:ss',
+        inputMask: 'YYYY-MM-DD HH:mm:ss',
         empty: null,
       }"
       v-bind:focus="focus"
@@ -220,8 +220,8 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        humanMask: '#### #### #### ####',
-        machineMask: '################',
+        inputMask: '#### #### #### ####',
+        outputMask: '################',
         empty: null,
         applyAfter: false,
         alphanumeric: true,
@@ -260,8 +260,8 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        humanMask: '(##) #####-####',
-        machineMask: '###########',
+        inputMask: '(##) #####-####',
+        outputMask: '###########',
         empty: null,
         applyAfter: false,
         alphanumeric: true,
@@ -302,8 +302,8 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        humanMask: '##-####-####-###',
-        machineMask: '##-####-####-###',
+        inputMask: '##-####-####-###',
+        outputMask: '##-####-####-###',
         empty: null,
         applyAfter: false,
         alphanumeric: true,
@@ -341,7 +341,7 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        machineMask: '###########',
+        outputMask: '###########',
         empty: null,
         applyAfter: true,
       }"
@@ -376,7 +376,7 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        machineMask: '##############',
+        outputMask: '##############',
         empty: null,
         applyAfter: true,
       }"
@@ -411,7 +411,7 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        machineMask: '########',
+        outputMask: '########',
         empty: null,
         applyAfter: true,
       }"
