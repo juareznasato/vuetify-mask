@@ -74,12 +74,11 @@ You can add any v-text-field property
         placeholder: ' ',
       }"
       v-bind:options="{
-        inputMask: '###.###.##0,00',
-        outputMask: '########0.00',
+        locale: 'pt-BR',
+        length: 11,
+        precision: 6,
         empty: null,
       }"
-      v-bind:focus="focus"
-      v-on:focus="focus = false"
     />
   </div>
 </template>
@@ -88,7 +87,7 @@ export default {
   data: () => ({
     value: "123456789.00",    // 123456789.00 or "123456789.00" or "" or null
     label: "Money",
-    focus: false,
+    disabled: false,
   }),
 };
 </script>
@@ -110,12 +109,11 @@ export default {
         placeholder: '',
       }"
       v-bind:options="{
-        inputMask: '#00,00',
-        outputMask: '#00.00',
+        locale: 'pt-BR',
+        length: 3,
+        precision: 2,
         empty: null,
       }"
-      v-bind:focus="focus"
-      v-on:focus="focus = false"
     />
   </div>
 </template>

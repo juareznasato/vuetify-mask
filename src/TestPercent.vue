@@ -12,8 +12,9 @@
         placeholder: '',
       }"
       v-bind:options="{
-        inputMask: '#00,00',
-        outputMask: '#00.00',
+        locale: 'pt-BR',
+        length: 3,
+        precision: 2,
         empty: null,
       }"
     />
