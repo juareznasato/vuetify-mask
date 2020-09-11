@@ -84,9 +84,9 @@ export default {
         }
         // UpperCase or LowerCase
         if (this.options.lowerCase) {
-          value = value.toLowerCase();
+          value = value ? value.toLowerCase() : value;
         } else {
-          value = value.toUpperCase();
+          value = value ? value.toUpperCase() : value;
         }
         // Apply the mask only after filling
         if (this.options.applyAfter) {
