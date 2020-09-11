@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field-money-locale
+    <v-text-field-money
       v-model="value"
       v-bind:label="label"
       v-bind:properties="{
@@ -12,9 +12,8 @@
         placeholder: ' ',
       }"
       v-bind:options="{
-        locale: 'pt-BR',
-        length: 11,
-        precision: 6,
+        inputMask: '###.###.##0,00',
+        outputMask: '########0.00',
         empty: null,
       }"
       ref="ref"
@@ -30,20 +29,22 @@
         : ""
     }}
     <v-btn v-on:click="$refs.ref.focus()">Focus</v-btn>
-    <v-btn v-on:click="disabled = !disabled">{{ disabled ? "Enabled" : "Disabled" }}</v-btn>
+    <v-btn v-on:click="disabled = !disabled">{{
+      disabled ? "Enabled" : "Disabled"
+    }}</v-btn>
   </div>
 </template>
 
 <script>
-import MoneyLocale from "@/components/MoneyLocale.vue";
+import Money from "@/components/Money.vue";
 
 export default {
   components: {
-    "v-text-field-money-locale": MoneyLocale,
+    "v-text-field-money": Money,
   },
   data: () => ({
-    value: 123456789.123000, // 1.23 or "1.23" or "" or null
-    label: "Money Locale",
+    value: "123456789.00", // 1.23 or "1.23" or "" or null
+    label: "Money",
     disabled: false,
   }),
 };

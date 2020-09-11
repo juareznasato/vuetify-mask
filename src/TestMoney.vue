@@ -12,8 +12,9 @@
         placeholder: ' ',
       }"
       v-bind:options="{
-        inputMask: '###.###.##0,00',
-        outputMask: '########0.00',
+        locale: 'pt-BR',
+        length: 11,
+        precision: 6,
         empty: null,
       }"
       ref="ref"
@@ -29,9 +30,7 @@
         : ""
     }}
     <v-btn v-on:click="$refs.ref.focus()">Focus</v-btn>
-    <v-btn v-on:click="disabled = !disabled">{{
-      disabled ? "Enabled" : "Disabled"
-    }}</v-btn>
+    <v-btn v-on:click="disabled = !disabled">{{ disabled ? "Enabled" : "Disabled" }}</v-btn>
   </div>
 </template>
 
@@ -43,7 +42,7 @@ export default {
     "v-text-field-money": Money,
   },
   data: () => ({
-    value: "123456789.00", // 1.23 or "1.23" or "" or null
+    value: 123456789.123000, // 1.23 or "1.23" or "" or null
     label: "Money",
     disabled: false,
   }),

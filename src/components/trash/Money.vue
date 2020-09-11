@@ -4,7 +4,7 @@
       v-model="cmpValue"
       v-bind:label="label"
       v-bind="properties"
-      v-bind:maxlength="options.length + options.precision"
+      v-bind:maxlength="options.inputMask.length"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
       v-on:change="$emit('change')"
@@ -40,10 +40,9 @@ export default {
       type: Object,
       default: function() {
         return {
-          locale: "pt-BR",
-          length: 11,
-          precision: 2,
-          empty: null,
+          inputMask: "###.###.###,##",
+          outputMask: "#########.##",
+          empty: "",
         };
       },
     },
@@ -67,10 +66,7 @@ export default {
   methods: {
     humanFormat: function(value) {
       if (value) {
-        value = Number(value).toLocaleString(this.options.locale, {
-          maximumFractionDigits: this.options.precision,
-          minimumFractionDigits: this.options.precision,
-        });
+        value = this.formatValue(value, this.options.inputMask);
       } else {
         value = this.options.empty;
       }
@@ -79,17 +75,7 @@ export default {
 
     machineFormat(value) {
       if (value) {
-        value = this.clearNumber(value);
-        // Ajustar quantidade de zeros à esquerda
-        value = value.padStart(parseInt(this.options.precision) + 1, "0");
-        // Incluir ponto na casa correta, conforme a precisão configurada
-        value =
-          value.substring(0, value.length - parseInt(this.options.precision)) +
-          "." +
-          value.substring(
-            value.length - parseInt(this.options.precision),
-            value.length
-          );
+        value = this.formatValue(value, this.options.outputMask);
         if (value === "") {
           value = this.options.empty;
         }
@@ -97,6 +83,53 @@ export default {
         value = this.options.empty;
       }
       return value;
+    },
+
+    formatValue: function(value, mask) {
+      return this.formatMoney(value, mask);
+    },
+
+    formatMoney: function(value, mask) {
+      value = this.clearNumber(value);
+      let result = "";
+      let count = 0;
+      if (value) {
+        let arrayValue = value
+          .toString()
+          .split("")
+          .reverse()
+          .join("");
+        let arrayMask = mask
+          .toString()
+          .split("")
+          .reverse()
+          .join("");
+        for (var i = 0; i < arrayMask.length; i++) {
+          if (i < arrayValue.length + count) {
+            if (arrayMask[i] === "#" || arrayMask[i] === "0") {
+              result = result + arrayValue[i - count];
+            } else {
+              result = result + arrayMask[i];
+              count++;
+            }
+          } else {
+            if (arrayMask[i] !== "#") {
+              if (arrayMask[i] === "0") {
+                result = result + arrayMask[i];
+              } else {
+                if (arrayMask[i + 1] === "0") {
+                  result = result + arrayMask[i];
+                }
+              }
+            }
+          }
+        }
+      }
+      result = result
+        .split("")
+        .reverse()
+        .join("");
+      return result;
     },
 
     // Retira todos os caracteres não numéricos e zeros à esquerda
