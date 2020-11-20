@@ -42,6 +42,9 @@
           <v-col cols="4" sm="4" md="4">
             <v-text-field-cep />
           </v-col>
+          <v-col cols="4" sm="4" md="4">
+            <v-text-field-imagebase64 />
+          </v-col>
         </v-row>
       </v-container>
     </v-card-text>
@@ -59,6 +62,7 @@ import TestSimpleMask from "./TestSimpleMask.vue";
 import TestCpf from "./TestCpf.vue";
 import TestCnpj from "./TestCnpj.vue";
 import TestCep from "./TestCep.vue";
+import TestImageBase64 from "./TestImageBase64.vue";
 
 export default {
   name: "app",
@@ -73,6 +77,7 @@ export default {
     "v-text-field-cpf": TestCpf,
     "v-text-field-cnpj": TestCnpj,
     "v-text-field-cep": TestCep,
+    "v-text-field-imagebase64": TestImageBase64,
   },
 };
 </script>
