@@ -1,20 +1,24 @@
 <template>
   <div>
-        <img v-bind:src="imageBase64" height="150" v-if="imageBase64 && showImage">
-        <v-text-field
-          v-model="cmpValue"
-          v-bind:label="label"
-          v-bind="properties"
-          v-on:click="pickFile"
-          readonly
-        ></v-text-field>
-        <input
-          ref="refImage"
-          type="file"
-          style="display: none"
-          accept="image/*"
-          v-on:change="onFilePicked"
-        >
+    <img
+      v-bind:src="imageBase64"
+      height="150"
+      v-if="imageBase64 && options.showImage"
+    />
+    <v-text-field
+      v-model="cmpValue"
+      v-bind:label="label"
+      v-bind="properties"
+      v-on:click="pickFile"
+      readonly
+    ></v-text-field>
+    <input
+      ref="refImage"
+      type="file"
+      style="display: none"
+      accept="image/*"
+      v-on:change="onFilePicked"
+    />
   </div>
 </template>
 
@@ -24,7 +28,7 @@ export default {
   props: {
     value: {
       type: [String],
-      default: "0",
+      default: "",
     },
     label: {
       type: String,
@@ -40,9 +44,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          outputMask: "########",
-          empty: "",
-          applyAfter: false,
+          showImage: true,
         };
       },
     },
@@ -52,7 +54,6 @@ export default {
     imageName: "",
     imageFile: "",
     imageBase64: "",
-    showImage: true
   }),
 
   computed: {
@@ -60,7 +61,7 @@ export default {
       get: function() {
         this.getImage(this.value);
         return this.imageName;
-      }
+      },
     },
   },
 
@@ -93,7 +94,7 @@ export default {
       this.imageName = "";
       this.imageFile = "";
       this.imageBase64 = "";
-    }
+    },
     // /* Obter o nome da imagem selecionada */
     // getImageName: function() {
     //   return this.imageName;
@@ -114,7 +115,6 @@ export default {
     // setShowImage(showImage) {
     //   this.showImage = showImage;
     // },
-  }
+  },
 };
 </script>
-

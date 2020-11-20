@@ -10,9 +10,7 @@
         prependIcon:'mdi-upload'
       }"
       v-bind:options="{
-        outputMask: '########',
-        empty: null,
-        applyAfter: true,
+        showImage: false,
       }"
     />
     v-model:
