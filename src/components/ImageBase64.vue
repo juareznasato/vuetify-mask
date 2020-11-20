@@ -1,15 +1,21 @@
 <template>
   <div>
-    <img
-      v-bind:src="imageBase64"
-      height="150"
-      v-if="imageBase64 && options.showImage"
-    />
+    <v-dialog
+      v-model="showDialog"
+      scrollable
+      max-width="30%"
+      v-if="imageBase64"
+    >
+      <img v-bind:src="imageBase64" />
+    </v-dialog>
     <v-text-field
       v-model="cmpValue"
       v-bind:label="label"
       v-bind="properties"
       v-on:click="pickFile"
+      v-on:click:append="
+        showDialog ? (showDialog = false) : (showDialog = true)
+      "
       readonly
     ></v-text-field>
     <input
@@ -43,9 +49,7 @@ export default {
     options: {
       type: Object,
       default: function() {
-        return {
-          showImage: true,
-        };
+        return {};
       },
     },
   },
@@ -54,6 +58,7 @@ export default {
     imageName: "",
     imageFile: "",
     imageBase64: "",
+    showDialog: false,
   }),
 
   computed: {
