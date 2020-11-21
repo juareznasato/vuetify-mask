@@ -64,14 +64,14 @@ export default {
   computed: {
     cmpValue: {
       get: function() {
-        this.getImage(this.value);
+        this.setImage(this.value);
         return this.imageName;
       },
     },
   },
 
   methods: {
-    getImage(value) {
+    setImage(value) {
       this.imageBase64 = value;
     },
     pickFile() {
@@ -90,6 +90,7 @@ export default {
           this.imageBase64 = fileReader.result;
           this.imageFile = files[0];
           this.$emit("input", this.imageBase64);
+          this.$emit("fileName", this.imageName);
         });
       } else {
         this.clear();
