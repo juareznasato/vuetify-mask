@@ -5,6 +5,7 @@
       v-bind:label="label"
       v-bind="properties"
       v-bind:maxlength="options.length + options.precision"
+      v-bind:rules="rules"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
       v-on:change="$emit('change')"
@@ -35,6 +36,10 @@ export default {
       default: function() {
         return {};
       },
+    },
+    rules: {
+      type: Array,
+      default: []
     },
     options: {
       type: Object,

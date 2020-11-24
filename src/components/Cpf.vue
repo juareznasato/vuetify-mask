@@ -7,6 +7,7 @@
       v-bind:maxlength="inputMask.length"
       v-bind:append-icon="options.applyAfter && value ? 'mdi-check-circle' : ''"
       v-bind:success="options.applyAfter && value ? true : false"
+      v-bind:rules="rules"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
       v-on:change="$emit('change')"
@@ -37,6 +38,10 @@ export default {
       default: function() {
         return {};
       },
+    },
+    rules: {
+      type: Array,
+      default: []
     },
     options: {
       type: Object,
