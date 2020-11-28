@@ -18,11 +18,14 @@
       "
       readonly
     ></v-text-field>
+    <!-- accept="image/*" -->
+    <!-- accept="application/pdf" -->
+    <!-- accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" -->
     <input
       ref="refImage"
       type="file"
       style="display: none"
-      accept="image/*"
+      v-bind:accept="options.acceptFile"
       v-on:change="onFilePicked"
     />
   </div>
@@ -49,7 +52,9 @@ export default {
     options: {
       type: Object,
       default: function() {
-        return {};
+        return {
+          acceptFile:"image/*,application/pdf",
+        };
       },
     },
   },
