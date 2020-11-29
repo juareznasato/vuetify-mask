@@ -4,9 +4,9 @@
       v-model="showDialog"
       scrollable
       max-width="30%"
-      v-if="imageBase64"
+      v-if="fileBase64"
     >
-      <img v-bind:src="imageBase64" />
+      <img v-bind:src="fileBase64" />
     </v-dialog>
     <v-text-field
       v-model="cmpValue"
@@ -62,7 +62,7 @@ export default {
   data: () => ({
     imageName: "",
     imageFile: "",
-    imageBase64: "",
+    fileBase64: "",
     showDialog: false,
   }),
 
@@ -77,7 +77,7 @@ export default {
 
   methods: {
     setImage(value) {
-      this.imageBase64 = value;
+      this.fileBase64 = value;
     },
     pickFile() {
       this.$refs.refImage.click();
@@ -92,9 +92,9 @@ export default {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(files[0]);
         fileReader.addEventListener("load", () => {
-          this.imageBase64 = fileReader.result;
+          this.fileBase64 = fileReader.result;
           this.imageFile = files[0];
-          this.$emit("input", this.imageBase64);
+          this.$emit("input", this.fileBase64);
           this.$emit("fileName", this.imageName);
         });
       } else {
@@ -104,7 +104,7 @@ export default {
     clear() {
       this.imageName = "";
       this.imageFile = "";
-      this.imageBase64 = "";
+      this.fileBase64 = "";
     },
     // /* Obter o nome da imagem selecionada */
     // getImageName: function() {
@@ -112,7 +112,7 @@ export default {
     // },
     // /* Obter a String base64 da imagem selecionada */
     // getImageBase64: function() {
-    //   return this.imageBase64;
+    //   return this.fileBase64;
     // },
     // /* Obter o tipo do arquivo */
     // getType: function() {

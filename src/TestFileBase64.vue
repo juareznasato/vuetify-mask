@@ -9,7 +9,7 @@
         appendIcon:'mdi-message-image-outline',
       }"
       v-bind:options="{
-        acceptFile:'image/jpeg,image/gif,image/png,application/pdf',
+        acceptFile:'application/pdf',
       }"
       v-on:fileName="fileName = $event"
     />
@@ -28,9 +28,10 @@
 </template>
 
 <script>
-// acceptFile="image/*"
-// acceptFile="application/pdf"
-// acceptFile="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+// acceptFile:'image/*'
+// acceptFile:'application/pdf'
+// acceptFile:'image/jpeg,image/gif,image/png,application/pdf'
+// acceptFile:'image/jpeg,image/gif,image/png,application/pdf,image/x-eps'
 
 import fileBase64 from "@/components/FileBase64.vue";
 
