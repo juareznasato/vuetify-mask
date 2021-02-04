@@ -9,7 +9,7 @@
         appendIcon:'mdi-message-image-outline',
       }"
       v-bind:options="{
-        acceptFile:'application/pdf',
+        acceptFile:'image/*',
       }"
       v-on:fileName="fileName = $event"
     />

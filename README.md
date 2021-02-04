@@ -428,3 +428,74 @@ export default {
 };
 </script>
 ```
+
+### - Files  (v-text-field-filebase64)
+&nbsp;Convert files to base 64.
+```
+<template>
+  <div>
+    <v-text-field-filebase64
+      v-model="value"
+      v-bind:label="label"
+      v-bind:properties="{
+        outlined: true,
+        placeholder: ' ',
+        appendIcon:'mdi-message-image-outline',
+      }"
+      v-bind:options="{
+        acceptFile:'image/*',
+      }"
+      v-on:fileName="fileName = $event"
+    />
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    value:"",
+    fileName: "",
+    label: "Select Image",
+  }),
+};
+</script>
+
+Other acceptFile options:
+acceptFile:'image/*'
+acceptFile:'application/pdf'
+acceptFile:'image/jpeg,image/gif,image/png,application/pdf'
+acceptFile:'image/jpeg,image/gif,image/png,application/pdf,image/x-eps'
+```
+
+### - DotNumber  (v-text-field-dotnumber)
+&nbsp;Accept only dot and numbers.
+```
+<template>
+  <div>
+    <v-text-field-dotnumber
+      v-model="value"
+      v-bind:label="label"
+      v-bind:properties="{
+        readonly: false,
+        disabled: false,
+        outlined: false,
+        clearable: true,
+        placeholder: '',
+      }"
+      v-bind:options="{
+        length: 20,
+        empty: null,
+        applyAfter: false,
+      }"
+    />
+  </div>
+</template>
+<script>
+export default {
+  data: () => ({
+    value: "1.23.456.789", // "" or null
+    label: "Only Dot and Number",
+  }),
+};
+</script>
+```
