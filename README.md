@@ -29,20 +29,32 @@ export default VuetifyMask;
 2- Add in src/mains.js file:  
 import "./plugins/vuetify-mask.js";
 
-
 ## Properties (v-bind:properties)
 You can add any v-text-field property
 [v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields). 
+
+Properties that have hyphens (single-line, background-color...) should be changed as follows:
+v-bind:properties="{
+   singleLine: true,
+   backgroundColor: 'red'
+}"
+or
+v-bind:properties="{
+   'single-line': true,
+   'background-color': 'red'
+}"
 
 ## Options (v-bind:options)
 | Option | Component | Default | Description |
 | ------------ | ------------ | ------------ | ------------ |
 | inputMask | Money, Percent, Integer, DateTime, SimpleMask  | | mask that will be applied in the v-text-field |
 | outputMask | Money, Percent, Integer, SimpleMask, CPF, CNPJ, CEP | | mask that will be applied in the v-model |
-| empty | Money, Percent, Integer, DateTime, SimpleMask, CPF, CNPJ, CEP | "" | Value in v-model when v-text-field is empty. Can be null, "" or other|
-| applyAfter | Integer, SimpleMask, CPF, CNPJ, CEP| | The value is masked only after all typing |
+| empty | Money, Percent, Integer, DateTime, SimpleMask, CPF, CNPJ, CEP, DotNumber | "" | Value in v-model when v-text-field is empty. Can be null, "" or other|
+| applyAfter | Integer, SimpleMask, CPF, CNPJ, CEP, DotNumber| | The value is masked only after all typing |
 | alphanumeric | SimpleMask | false | |
 | lowerCase| SimpleMask | false | |
+| acceptFile| FileBase64 | image/* | Sets the file type to convert to base64 |
+
 
 ## Events
 | Event | value | Description |
@@ -195,6 +207,41 @@ export default {
     value: "1595386800000",    // Milliseconds
     label: "DateTime",
     focus: false,
+  }),
+};
+</script>
+```
+### - DateTimePicker  (v-text-field-datetimepicker)
+&nbsp; works in milliseconds
+```
+<template>
+  <div>
+    <v-text-field-datetimepicker
+      v-model="value"
+      label="Data Hora"
+      v-bind:properties="{
+        backgroundColor: '#EEE9E9',
+        clearable: false,
+        outlined: true,
+        prependIcon: 'mdi-calendar',
+        appendIcon: 'mdi-av-timer',
+      }"
+      v-bind:options="{
+        tabDateTitle: 'Date',
+        tabTimeTitle: 'Time',
+        tabBackgroundColor: 'green',
+        locale: 'en-US',
+        format: 'YYYY-MM-DD',
+        closeOnDateClick: false,
+        useSeconds: false,
+      }"
+    />
+  </div>
+</template>
+<script>
+export default {
+  data: () => ({
+    value: 1558220700000,
   }),
 };
 </script>
