@@ -19,13 +19,15 @@
     "money",
     "integer",
     "datetime",
+    "datetimepicker",
     "decimal",
     "percent",
     "phonenumber",
     "creditcard",
     "cpf",
     "cnpj",
-    "cep"
+    "cep",
+    "base64"
   ],
   "repository": {
     "type": "git",
