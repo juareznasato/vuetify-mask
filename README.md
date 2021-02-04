@@ -30,19 +30,19 @@ export default VuetifyMask;
 import "./plugins/vuetify-mask.js";
 
 ## Properties (v-bind:properties)
-You can add any v-text-field property
-[v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields). 
+You can add any v-text-field property  
+[v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields).  
 
-Properties that have hyphens (single-line, background-color...) should be changed as follows:
-v-bind:properties="{
-   singleLine: true,
-   backgroundColor: 'red'
-}"
-or
-v-bind:properties="{
-   'single-line': true,
-   'background-color': 'red'
-}"
+Properties that have hyphens (single-line, background-color...) should be changed as follows:  
+v-bind:properties="{  
+   singleLine: true,  
+   backgroundColor: 'red'  
+}"  
+or  
+v-bind:properties="{  
+   'single-line': true,  
+   'background-color': 'red'  
+}"  
 
 ## Options (v-bind:options)
 | Option | Component | Default | Description |
