@@ -12,18 +12,19 @@
       <template v-slot:activator="{ on }">
         <v-text-field
           v-model="compShow"
-          v-bind:readonly="readonly"
-          v-bind:clearable="options.clearable"
-          v-bind:outlined="options.outlined"
           v-bind:label="label"
-          v-bind:prepend-icon="options.icon"
-          v-bind:append-icon="options.iconTime"
-          v-on:click:append="menu=true, activeTab=1"
-          v-on:click:clear="menu=false"
+          v-bind="properties"
+          v-on:click:append="(menu = true), (activeTab = 1)"
+          v-on:click:clear="menu = false"
           v-on="on"
         ></v-text-field>
       </template>
-      <v-tabs dark class="elevation-2" v-bind:background-color="options.backgroundColor" v-model="activeTab">
+      <v-tabs
+        dark
+        class="elevation-2"
+        v-bind:background-color="options.tabBackgroundColor"
+        v-model="activeTab"
+      >
         <v-tab v-bind:key="0">
           <v-icon left>mdi-calendar-outline</v-icon>
           {{ options.tabDateTitle }}
@@ -49,10 +50,10 @@
               ref="refTimePicker"
               format="24hr"
               v-model="modTime"
-              v-bind:color="options.backgroundColor"
+              v-bind:color="options.tabBackgroundColor"
               v-bind:use-seconds="options.useSeconds"
               v-on:change="(menu = false), emit()"
-              v-bind:disabled="formattedDate === null || formattedDate === '' "
+              v-bind:disabled="formattedDate === null || formattedDate === ''"
             ></v-time-picker>
           </v-card>
         </v-tab-item>
@@ -68,30 +69,24 @@ export default {
   props: {
     value: {
       type: [Number, String],
-      default: 0
+      default: 0,
     },
     label: {
       type: String,
-      default: "Label"
+      default: "Label",
+    },
+    properties: {
+      type: Object,
+      default: function() {
+        return {};
+      },
     },
     options: {
       type: Object,
       default: function() {
-        return {
-          tabDateTitle: "Data",
-          tabTimeTitle: "Hora",
-          locale: "pt-BR",
-          format: "DD/MM/YYYY",
-          icon: "event",
-          iconTime: "av_timer",
-          backgroundColor: "cyan",
-          closeOnDateClick: false,
-          useSeconds: false,
-          clearable: false,
-          outlined: false
-        };
-      }
-    }
+        return {};
+      },
+    },
   },
   data: () => ({
     modDate: "",
@@ -99,7 +94,7 @@ export default {
     formattedDate: "",
     menu: false,
     readonly: true,
-    activeTab: 0
+    activeTab: 0,
   }),
   computed: {
     compShow: {
@@ -123,8 +118,8 @@ export default {
         THIS.modTime = this.options.useSeconds ? "00:00:00" : "00:00";
         THIS.formattedDate = null;
         this.$emit("input", null);
-      }
-    }
+      },
+    },
   },
   watch: {
     // When computed.compShow.formattedDate is changed:
@@ -141,7 +136,7 @@ export default {
           this.$refs.refTimePicker.selectingHour = true;
         }
       }
-    }
+    },
   },
   methods: {
     emit() {
@@ -156,8 +151,8 @@ export default {
       } else {
         this.activeTab = 1;
       }
-    }
-  }
+    },
+  },
 };
 // Str to milli
 // var d = Date.parse(date);

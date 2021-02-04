@@ -5,18 +5,21 @@
         <v-text-field-datetimepicker
           v-model="value1"
           label="Data Hora"
+          v-bind:properties="{
+            backgroundColor: '#D3D3D3',
+            clearable: false,
+            outlined: true,
+            prependIcon: 'mdi-calendar',
+            appendIcon: 'mdi-av-timer'
+          }"
           v-bind:options="{
             tabDateTitle: 'Data',
             tabTimeTitle: 'Hora',
+            tabBackgroundColor: 'green',
             locale: 'pt-BR',
             format: 'DD/MM/YYYY',
-            icon: 'mdi-calendar',
-            iconTime: '',
-            backgroundColor: 'green',
             closeOnDateClick: false,
             useSeconds: false,
-            clearable: false,
-            outlined: true,
           }"
         />
         v-model: {{ value1 }} (milliseconds)
@@ -25,18 +28,21 @@
         <v-text-field-datetimepicker
           v-model="value2"
           label="Date Time Picker"
+          v-bind:properties="{
+            backgroundColor: '',
+            clearable: false,
+            outlined: false,
+            prependIcon: 'mdi-calendar',
+            appendIcon: ''
+          }"
           v-bind:options="{
             tabDateTitle: 'Date',
             tabTimeTitle: 'Time',
+            tabBackgroundColor: 'blue',
             locale: 'en-US',
             format: 'YYYY-MM-DD',
-            icon: '',
-            iconTime: 'mdi-av-timer',
-            backgroundColor: 'blue',
-            closeOnDateClick: true,
-            useSeconds: true,
-            clearable: false,
-            outlined: true,
+            closeOnDateClick: false,
+            useSeconds: false,
           }"
         />
         v-model: {{ value2 }} (milliseconds)
@@ -45,18 +51,21 @@
         <v-text-field-datetimepicker
           v-model="value3"
           label="Date Time Picker"
+          v-bind:properties="{
+            backgroundColor: '',
+            clearable: false,
+            outlined: false,
+            prependIcon: '',
+            appendIcon: ''
+          }"
           v-bind:options="{
             tabDateTitle: 'Date',
             tabTimeTitle: 'Time',
+            tabBackgroundColor: 'red',
             locale: 'en-US',
             format: 'YYYY-MM-DD',
-            icon: 'mdi-calendar',
-            iconTime: '',
-            backgroundColor: 'red',
             closeOnDateClick: false,
             useSeconds: true,
-            clearable: true,
-            outlined: false,
           }"
         />
         v-model: {{ value3 }} (milliseconds)
