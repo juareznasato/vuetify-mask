@@ -12,7 +12,7 @@ vuetify-mask is a component for working with some of the main types of masks in 
 - vuejs  
 - vuetify ($ npm install vuetify --save)  
 - moment ($ npm install moment --save)
-- material design icon (npm install @mdi/font -D --save)
+- material design icon ($ npm install @mdi/font -D --save)
 
 ## Install
 ```
