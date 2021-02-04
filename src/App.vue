@@ -45,6 +45,9 @@
           <v-col cols="4" sm="4" md="4">
             <v-text-field-filebase64 />
           </v-col>
+          <v-col cols="4" sm="4" md="4">
+            <v-text-field-dotnumber />
+          </v-col>
         </v-row>
       </v-container>
     </v-card-text>
@@ -63,6 +66,7 @@ import testCpf from "./TestCpf.vue";
 import testCnpj from "./TestCnpj.vue";
 import testCep from "./TestCep.vue";
 import testFileBase64 from "./TestFileBase64.vue";
+import testDotNumber from "./TestDotNumber.vue";
 
 export default {
   name: "app",
@@ -78,6 +82,7 @@ export default {
     "v-text-field-cnpj": testCnpj,
     "v-text-field-cep": testCep,
     "v-text-field-filebase64": testFileBase64,
+    "v-text-field-dotnumber": testDotNumber,
   },
 };
 </script>
