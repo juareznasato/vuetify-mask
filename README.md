@@ -34,14 +34,17 @@ You can add any v-text-field property
 [v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields).  
 
 Properties that have hyphens (single-line, background-color...) should be changed as follows:  
+
 v-bind:properties="{  
-   singleLine: true,  
-   backgroundColor: 'red'  
+&nbsp;&nbsp;singleLine: true,  
+&nbsp;&nbsp;backgroundColor: 'red'  
 }"  
+
 or  
+
 v-bind:properties="{  
-   'single-line': true,  
-   'background-color': 'red'  
+&nbsp;&nbsp;'single-line': true,  
+&nbsp;&nbsp;'background-color': 'red'  
 }"  
 
 ## Options (v-bind:options)
