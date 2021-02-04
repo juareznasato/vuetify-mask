@@ -17,12 +17,6 @@
           <v-col cols="4" sm="4" md="4">
             <v-text-field-integer />
           </v-col>
-          <v-col cols="12" sm="4" md="12">
-            <v-text-field-datetimepicker />
-          </v-col>
-          <v-col cols="4" sm="4" md="4">
-            <v-text-field-datetime />
-          </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-creditcard />            
           </v-col>
@@ -33,8 +27,16 @@
             <v-text-field-simplemask />
           </v-col>
           <v-col cols="4" sm="4" md="4">
+            <v-text-field-dotnumber />
           </v-col>
           <v-col cols="4" sm="4" md="4">
+            <v-text-field-filebase64 />
+          </v-col>
+          <v-col cols="4" sm="4" md="4">
+            <v-text-field-datetime />
+          </v-col>
+          <v-col cols="12" sm="4" md="12">
+            <v-text-field-datetimepicker />
           </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-cpf />
@@ -44,12 +46,6 @@
           </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-cep />
-          </v-col>
-          <v-col cols="4" sm="4" md="4">
-            <v-text-field-filebase64 />
-          </v-col>
-          <v-col cols="4" sm="4" md="4">
-            <v-text-field-dotnumber />
           </v-col>
         </v-row>
       </v-container>

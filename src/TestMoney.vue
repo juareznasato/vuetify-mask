@@ -14,7 +14,7 @@
       v-bind:options="{
         locale: 'pt-BR',
         length: 11,
-        precision: 6,
+        precision: 2,
         empty: null,
       }"
       ref="ref"
@@ -42,7 +42,7 @@ export default {
     "v-text-field-money": Money,
   },
   data: () => ({
-    value: 123456789.123000, // 1.23 or "1.23" or "" or null
+    value: 123456789.00, // 1.23 or "1.23" or "" or null
     label: "Money",
     disabled: false,
   }),

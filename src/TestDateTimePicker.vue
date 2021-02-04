@@ -6,7 +6,7 @@
           v-model="value1"
           label="Data Hora"
           v-bind:properties="{
-            backgroundColor: '#D3D3D3',
+            backgroundColor: '#EEE9E9',
             clearable: false,
             outlined: true,
             prependIcon: 'mdi-calendar',
@@ -29,7 +29,7 @@
           v-model="value2"
           label="Date Time Picker"
           v-bind:properties="{
-            backgroundColor: '',
+            backgroundColor: '#EEE9E9',
             clearable: false,
             outlined: false,
             prependIcon: 'mdi-calendar',
