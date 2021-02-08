@@ -42,7 +42,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          outputMask: "##########",
+          outputMask: "###########",
           empty: "",
           applyAfter: false,
         };
