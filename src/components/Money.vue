@@ -66,7 +66,7 @@ export default {
   watch: {},
   methods: {
     humanFormat: function(value) {
-      if (value) {
+      if (value || value === 0) {
         value = Number(value).toLocaleString(this.options.locale, {
           maximumFractionDigits: this.options.precision,
           minimumFractionDigits: this.options.precision,

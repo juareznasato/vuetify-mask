@@ -1,7 +1,7 @@
 {
   "name": "vuetify-mask",
-  "version": "1.1.0",
-  "description": "Mask component to vuetify 2",
+  "version": "1.1.1",
+  "description": "Mask components to vuetify 2",
   "private": false,
   "license": "MIT",
   "readmeFilename": "README.md",
