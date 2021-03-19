@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Money from "@/components/Money.vue";
+import Money from "@/components/Decimal.vue";
 
 export default {
   components: {
