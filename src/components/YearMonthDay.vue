@@ -2,7 +2,7 @@
   <div>
     <template>
       <v-row dense>
-        <v-col cols="12" sm="2" md="2">
+        <v-col cols="12" sm="2" md="4">
           <v-text-field
             name="namYear"
             ref="refYear"
@@ -11,6 +11,7 @@
             v-bind:label="label.year"
             v-bind="properties"
             v-on:keypress="keyPress"
+            v-on:keyup="keyUpYear"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
             v-on:click="$emit('click')"
@@ -29,6 +30,7 @@
             v-bind:label="label.month"
             v-bind="properties"
             v-on:keypress="keyPress"
+            v-on:keyup="keyUpMonth"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
             v-on:click="$emit('click')"
@@ -47,6 +49,7 @@
             v-bind:label="label.startDay"
             v-bind="properties"
             v-on:keypress="keyPress"
+            v-on:keyup="keyUpStartDay"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
             v-on:click="$emit('click')"
@@ -59,12 +62,13 @@
         <v-col cols="12" sm="10" md="2">
           <v-text-field
             name="namFinalDay"
-            ref="refFinalDay"
+            ref="refFinishDay"
             maxlength="2"
             v-model="value.finishDay"
             v-bind:label="label.finishDay"
             v-bind="properties"
             v-on:keypress="keyPress"
+            v-on:keyup="keyUpFinishDay"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
             v-on:click="$emit('click')"
@@ -80,6 +84,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   model: { prop: "value", event: "input" },
   props: {
@@ -122,6 +128,71 @@ export default {
         // 46 is dot
         $event.preventDefault();
       }
+    },
+    keyUpYear() {
+      if (this.value.year) {
+      if (this.value.year.length === 4) {
+        this.$refs.refMonth.focus();
+      } else {
+        if (this.value.year.length === 0) {
+          this.value.year = null;  
+        }
+      }
+      }
+    },
+    keyUpMonth() {
+      if (this.value.year) {
+        if ((Number(this.value.month) < 1) || (Number(this.value.month) > 12)) {
+          this.value.month = null;
+        } else {
+          if (this.value.month.length === 2) {
+            this.$refs.refStartDay.focus();    
+          }
+        }
+      } else {
+        this.value.month = null;
+        this.$refs.refYear.focus();
+      }
+    },
+    keyUpStartDay() {
+      if (this.value.year) {
+        if (this.value.month) {
+          let m = moment(this.value.year +"-"+ this.value.month +"-"+ this.value.startDay, 'YYYY-MM-DD');
+          if (!m.isValid()) {
+            this.value.startDay = null;
+          } else {
+            if (this.value.startDay.length === 2) {
+              this.$refs.refFinishDay.focus();
+            } else {
+              if (this.value.startDay.length === 0) {
+                this.value.startDay = null;
+              }
+            }
+          }
+        } else {
+          this.value.startDay = null;
+          this.$refs.refMonth.focus();
+        }
+      } else {
+        this.value.startDay = null;
+        this.$refs.refYear.focus();
+      }
+    },
+    keyUpFinishDay() {
+      if (this.value.startDay) {
+        let m = moment(this.value.year +"-"+ this.value.month +"-"+ this.value.finishDay, 'YYYY-MM-DD');
+        if (!m.isValid()) {
+          this.value.finishDay = "";
+        } else {
+          if (this.value.finishDay.length === 0) {
+            this.value.finishDay = null;
+          }
+        }
+      } else {
+        this.value.finishDay = null;
+        this.$refs.refStartDay.focus();
+      }
+
     },
   },
 };
