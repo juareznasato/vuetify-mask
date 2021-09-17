@@ -35,8 +35,8 @@ export default {
     "v-text-field-yearmonthday": YearMonthDay,
   },
   data: () => ({
-    value: {year: "2021", month: "2", startDay: "1", finishDay: "31"},
-    label: {year: "Ano", month: "Mês", startDay: "Dia Inicial", finishDay: "Dia Final"},
+    value: {year: "", month: "", startDay: "", finishDay: ""},
+    label: {year: "Year", month: "Month", startDay: "Start Day", finishDay: "Finish Day"},
   }),
 };
 </script>
