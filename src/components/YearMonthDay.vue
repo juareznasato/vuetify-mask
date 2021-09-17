@@ -6,10 +6,10 @@
           <v-text-field
             name="namYear"
             ref="refYear"
-            v-model="year"
-            v-bind:label="label"
+            maxlength="4"
+            v-model="value.year"
+            v-bind:label="label.year"
             v-bind="properties"
-            v-bind:maxlength="4"
             v-on:keypress="keyPress"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
@@ -24,10 +24,10 @@
           <v-text-field
             name="namMonth"
             ref="refMonth"
-            v-model="month"
-            v-bind:label="label"
+            maxlength="2"
+            v-model="value.month"
+            v-bind:label="label.month"
             v-bind="properties"
-            v-bind:maxlength="2"
             v-on:keypress="keyPress"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
@@ -42,10 +42,10 @@
           <v-text-field
             name="namStartDay"
             ref="refStartDay"
-            v-model="month"
-            v-bind:label="label"
+            maxlength="2"
+            v-model="value.startDay"
+            v-bind:label="label.startDay"
             v-bind="properties"
-            v-bind:maxlength="2"
             v-on:keypress="keyPress"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
@@ -60,10 +60,10 @@
           <v-text-field
             name="namFinalDay"
             ref="refFinalDay"
-            v-model="month"
-            v-bind:label="label"
+            maxlength="2"
+            v-model="value.finishDay"
+            v-bind:label="label.finishDay"
             v-bind="properties"
-            v-bind:maxlength="2"
             v-on:keypress="keyPress"
             v-on:blur="$emit('blur')"
             v-on:change="$emit('change')"
@@ -84,12 +84,26 @@ export default {
   model: { prop: "value", event: "input" },
   props: {
     value: {
-      type: [String, Number],
-      default: "0",
+      type: Object,
+      default: function () {
+        return {
+          year: "",
+          month: "",
+          startDay: "",
+          finishDay: "",
+        };
+      },
     },
     label: {
-      type: String,
-      default: "",
+      type: Object,
+      default: function () {
+        return {
+          year: "Year",
+          month: "Month",
+          startDay: "Start Day",
+          finishDay: "Finish Day",
+        };
+      },
     },
     properties: {
       type: Object,
@@ -97,29 +111,16 @@ export default {
         return {};
       },
     },
-    options: {
-      type: Object,
-      default: function () {
-        return {
-          empty: "", // v-model value when v-text-field is empty. You can use "0" or "" or null or other.
-        };
-      },
-    },
   },
-  data: () => ({
-    year: 2021,
-    month: 2,
-  }),
+  data: () => ({}),
   methods: {
     keyPress($event) {
-      if (!this.options.alphanumeric) {
-        // console.log($event.keyCode); //keyCodes value
-        let keyCode = $event.keyCode ? $event.keyCode : $event.which;
-        // if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
-        if (keyCode < 48 || keyCode > 57) {
-          // 46 is dot
-          $event.preventDefault();
-        }
+      // console.log($event.keyCode); //keyCodes value
+      let keyCode = $event.keyCode ? $event.keyCode : $event.which;
+      // if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
+      if (keyCode < 48 || keyCode > 57) {
+        // 46 is dot
+        $event.preventDefault();
       }
     },
   },

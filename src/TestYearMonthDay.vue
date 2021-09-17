@@ -11,9 +11,7 @@
         outlined: true,
         clearable: false,
         placeholder: '',
-      }"
-      v-bind:options="{
-        empty: null,
+        persistentPlaceholder:true,
       }"
     />
     v-model:
@@ -37,8 +35,8 @@ export default {
     "v-text-field-yearmonthday": YearMonthDay,
   },
   data: () => ({
-    value: "23-A568-B953-356", // 1.23 or "1.23" or "" or null
-    label: "Simple Mask",
+    value: {year: "2021", month: "2", startDay: "1", finishDay: "31"},
+    label: {year: "Ano", month: "Mês", startDay: "Dia Inicial", finishDay: "Dia Final"},
   }),
 };
 </script>
