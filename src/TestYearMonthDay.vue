@@ -13,6 +13,9 @@
         placeholder: '',
         persistentPlaceholder:true,
       }"
+      v-bind:options="{
+        empty: '',
+      }"
     />
     v-model:
     {{
