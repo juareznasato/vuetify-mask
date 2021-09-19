@@ -9,6 +9,7 @@
             maxlength="4"
             v-model="value.year"
             v-bind:label="label.year"
+            v-bind:placeholder="placeholder.year"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpYear"
@@ -28,6 +29,7 @@
             maxlength="2"
             v-model="value.month"
             v-bind:label="label.month"
+            v-bind:placeholder="placeholder.month"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpMonth"
@@ -47,6 +49,7 @@
             maxlength="2"
             v-model="value.startDay"
             v-bind:label="label.startDay"
+            v-bind:placeholder="placeholder.day"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpStartDay"
@@ -66,6 +69,7 @@
             maxlength="2"
             v-model="value.finishDay"
             v-bind:label="label.finishDay"
+            v-bind:placeholder="placeholder.day"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpFinishDay"
@@ -108,6 +112,16 @@ export default {
           month: "Month",
           startDay: "Start Day",
           finishDay: "Finish Day",
+        };
+      },
+    },
+    placeholder: {
+      type: Object,
+      default: function () {
+        return {
+          year: "yyyy",
+          month: "mm",
+          day: "dd",
         };
       },
     },
