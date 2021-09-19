@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field-yearmonthday
+    <v-text-field-yearmonthdayday
       v-model="value"
       v-bind:label="label"
       v-bind:placeholder= "placeholder"
@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import YearMonthDay from "@/components/YearMonthDay.vue";
+import YearMonthDayDay from "@/components/YearMonthDayDay.vue";
 
 export default {
   components: {
-    "v-text-field-yearmonthday": YearMonthDay,
+    "v-text-field-yearmonthdayday": YearMonthDayDay,
   },
   data: () => ({
     value: {year: "", month: "", startDay: "", finishDay: ""},

@@ -48,7 +48,7 @@
             <v-text-field-cep />
           </v-col>
           <v-col cols="4" sm="4" md="4">
-            <v-text-field-yearmonthday />
+            <v-text-field-yearmonthdayday />
           </v-col>
         </v-row>
       </v-container>
@@ -70,7 +70,7 @@ import testCnpj from "./TestCnpj.vue";
 import testCep from "./TestCep.vue";
 import testFileBase64 from "./TestFileBase64.vue";
 import testDotNumber from "./TestDotNumber.vue";
-import testYearMonthDay from "./TestYearMonthDay.vue";
+import testYearMonthDayDay from "./TestYearMonthDayDay.vue";
 
 export default {
   name: "app",
@@ -88,7 +88,7 @@ export default {
     "v-text-field-filebase64": testFileBase64,
     "v-text-field-dotnumber": testDotNumber,
     "v-text-field-datetimepicker": testDateTimePicker,
-    "v-text-field-yearmonthday": testYearMonthDay,
+    "v-text-field-yearmonthdayday": testYearMonthDayDay,
   },
 };
 </script>
