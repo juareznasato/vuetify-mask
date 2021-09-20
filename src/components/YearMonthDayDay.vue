@@ -8,8 +8,8 @@
             ref="refYear"
             maxlength="4"
             v-model="value.year"
-            v-bind:label="label.year"
-            v-bind:placeholder="placeholder.year"
+            v-bind:label="label.toString().split(';')[0]"
+            v-bind:placeholder="placeholder.toString().split(';')[0]"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpYear"
@@ -28,8 +28,8 @@
             ref="refMonth"
             maxlength="2"
             v-model="value.month"
-            v-bind:label="label.month"
-            v-bind:placeholder="placeholder.month"
+            v-bind:label="label.toString().split(';')[1]"
+            v-bind:placeholder="placeholder.toString().split(';')[1]"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpMonth"
@@ -48,8 +48,8 @@
             ref="refStartDay"
             maxlength="2"
             v-model="value.startDay"
-            v-bind:label="label.startDay"
-            v-bind:placeholder="placeholder.day"
+            v-bind:label="label.toString().split(';')[2]"
+            v-bind:placeholder="placeholder.toString().split(';')[2]"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpStartDay"
@@ -68,8 +68,8 @@
             ref="refFinishDay"
             maxlength="2"
             v-model="value.finishDay"
-            v-bind:label="label.finishDay"
-            v-bind:placeholder="placeholder.day"
+            v-bind:label="label.toString().split(';')[3]"
+            v-bind:placeholder="placeholder.toString().split(';')[2]"
             v-bind="properties"
             v-on:keypress="keyPress"
             v-on:keyup="keyUpFinishDay"
@@ -105,25 +105,12 @@ export default {
       },
     },
     label: {
-      type: Object,
-      default: function () {
-        return {
-          year: "Year",
-          month: "Month",
-          startDay: "Start Day",
-          finishDay: "Finish Day",
-        };
-      },
+      type: String,
+      default: "Year;Month;StartDay;FinishDay;",
     },
     placeholder: {
-      type: Object,
-      default: function () {
-        return {
-          year: "yyyy",
-          month: "mm",
-          day: "dd",
-        };
-      },
+      type: String,
+      default: "yyyy;mm;dd;",
     },
     properties: {
       type: Object,
