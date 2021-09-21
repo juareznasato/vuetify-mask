@@ -38,7 +38,7 @@ export default {
     "v-text-field-yearmonthdayday": YearMonthDayDay,
   },
   data: () => ({
-    value: {year: "", month: "", startDay: "", finishDay: ""},
+    value: "",
     label: "Ano;Mes;DiaInicial;DiaFinal;",
     placeholder: "AAAA;MM;DD;DD;",
   }),
