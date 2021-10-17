@@ -21,31 +21,37 @@ $ npm install vuetify-mask --save
 
 ## Register
 1- Create a file src/plugins/vuetify-mask.js with:  
+```js
 import Vue from "vue";  
 import VuetifyMask from "vuetify-mask";  
 Vue.use(VuetifyMask);  
 export default VuetifyMask;
+```
 
 2- Add in src/mains.js file:  
+```js
 import "./plugins/vuetify-mask.js";
+```
 
 ## Properties (v-bind:properties)
 You can add any v-text-field property  
 [v-text-field properties](https://vuetifyjs.com/en/components/text-fields/#text-fields).  
 
 Properties that have hyphens (single-line, background-color...) should be changed as follows:  
-
+```vue
 v-bind:properties="{  
-&nbsp;&nbsp;singleLine: true,  
-&nbsp;&nbsp;backgroundColor: 'red'  
+    singleLine: true,  
+    backgroundColor: 'red'  
 }"  
+```
 
 or  
-
+```vue
 v-bind:properties="{  
-&nbsp;&nbsp;'single-line': true,  
-&nbsp;&nbsp;'background-color': 'red'  
+    'single-line': true,  
+    'background-color': 'red'  
 }"  
+```
 
 ## Options (v-bind:options)
 | Option | Component | Default | Description |
@@ -73,7 +79,7 @@ v-bind:properties="{
 ## How to use
 
 ### - Money (v-text-field-money)
-```
+```vue
 <template>
   <div>
     <v-text-field-money
@@ -108,7 +114,7 @@ export default {
 ```
 
 ### - Percent  (v-text-field-percent)
-```
+```vue
 <template>
   <div>
     <v-text-field-percent
@@ -144,7 +150,7 @@ export default {
 ```
 
 ### - Integer  (v-text-field-integer)
-```
+```vue
 <template>
   <div>
     <v-text-field-integer
@@ -181,7 +187,7 @@ export default {
 
 ### - DateTime  (v-text-field-datetime)
 &nbsp; works in milliseconds
-```
+```vue
 <template>
   <div>
     <v-text-field-datetime
@@ -216,7 +222,7 @@ export default {
 ```
 ### - DateTimePicker  (v-text-field-datetimepicker)
 &nbsp; works in milliseconds
-```
+```vue
 <template>
   <div>
     <v-text-field-datetimepicker
@@ -251,7 +257,7 @@ export default {
 ```
 
 ### - Credit Card  (v-text-field-simplemask)
-```
+```vue
 <template>
   <div>
     <v-text-field-simplemask
@@ -291,7 +297,7 @@ export default {
 ```
 
 ### - Phone Number  (v-text-field-simplemask)
-```
+```vue
 <template>
   <div>
     <v-text-field-simplemask
@@ -333,7 +339,7 @@ export default {
 
 ### - Simple Mask  (v-text-field-simplemask)
 &nbsp; You can create your masks.
-```
+```vue
 <template>
   <div>
     <v-text-field-simplemask
@@ -374,7 +380,7 @@ export default {
 
 ### - Files  (v-text-field-filebase64)
 &nbsp;Convert files to base 64.
-```
+```vue
 <template>
   <div>
     <v-text-field-filebase64
@@ -412,7 +418,7 @@ acceptFile:'image/jpeg,image/gif,image/png,application/pdf,image/x-eps'
 
 ### - DotNumber  (v-text-field-dotnumber)
 &nbsp;Accept only dot and numbers.
-```
+```vue
 <template>
   <div>
     <v-text-field-dotnumber
@@ -446,7 +452,7 @@ export default {
 
 ### - CPF  (v-text-field-cpf)
 &nbsp;brazilian mask
-```
+```vue
 <template>
   <div>
     <v-text-field-cpf
@@ -482,7 +488,7 @@ export default {
 
 ### - CNPJ  (v-text-field-cnpj)
 &nbsp;brazilian mask
-```
+```vue
 <template>
   <div>
     <v-text-field-cnpj
@@ -517,7 +523,7 @@ export default {
 
 ### - CEP  (v-text-field-cep)
 &nbsp;brazilian mask
-```
+```vue
 <template>
   <div>
     <v-text-field-cep
