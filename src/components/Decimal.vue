@@ -139,7 +139,8 @@ export default {
     keyPress($event) {
       // console.log($event.keyCode); //keyCodes value
       let keyCode = $event.keyCode ? $event.keyCode : $event.which;
-      if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
+      if (keyCode < 48 || keyCode > 57) {
+        // 46 is dot!
 
         // key pressed is negative...
         if (this.options.allowNegative && keyCode === 45) {
