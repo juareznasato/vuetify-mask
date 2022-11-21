@@ -12,16 +12,19 @@
             <v-text-field-money />
           </v-col>
           <v-col cols="4" sm="4" md="4">
+            <v-text-field-negative-money />
+          </v-col>
+          <v-col cols="4" sm="4" md="4">
             <v-text-field-percent />
           </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-integer />
           </v-col>
           <v-col cols="4" sm="4" md="4">
-            <v-text-field-creditcard />            
+            <v-text-field-creditcard />
           </v-col>
           <v-col cols="4" sm="4" md="4">
-            <v-text-field-phonenumber />            
+            <v-text-field-phonenumber />
           </v-col>
           <v-col cols="4" sm="4" md="4">
             <v-text-field-simplemask />
@@ -58,6 +61,7 @@
 
 <script>
 import testMoney from "./TestMoney.vue";
+import testNegativeMoney from "./TestNegativeMoney.vue";
 import testPercent from "./TestPercent.vue";
 import testInteger from "./TestInteger.vue";
 import testDateTime from "./TestDateTime.vue";
@@ -76,6 +80,7 @@ export default {
   name: "app",
   components: {
     "v-text-field-money": testMoney,
+    "v-text-field-negative-money": testNegativeMoney,
     "v-text-field-percent": testPercent,
     "v-text-field-integer": testInteger,
     "v-text-field-datetime": testDateTime,
