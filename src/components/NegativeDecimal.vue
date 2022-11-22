@@ -73,7 +73,7 @@ export default {
       if (value || value === 0) {
         if (value < 0) {
           value = value * -1;
-          this.$emit("input", this.machineFormat(value));
+          this.$emit("input", value);
           this.$emit("signal", "-");
         }
         value = Number(value).toLocaleString(this.options.locale, {
@@ -138,7 +138,7 @@ export default {
       let keyCode = $event.keyCode ? $event.keyCode : $event.which;
       // Positive key
       if (keyCode === 43) {
-        this.$emit("signal", "+");
+        this.$emit("signal", ""); // +
       }
       // Negative key
       if (keyCode === 45) {
