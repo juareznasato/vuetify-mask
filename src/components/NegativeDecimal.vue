@@ -70,11 +70,12 @@ export default {
   watch: {},
   methods: {
     humanFormat: function(value) {
-      if (value < 0) {
-        value = value * -1;
-        this.$emit("signal", "-");
-      }
       if (value || value === 0) {
+        if (value < 0) {
+          value = value * -1;
+          this.$emit("input", this.machineFormat(value));
+          this.$emit("signal", "-");
+        }
         value = Number(value).toLocaleString(this.options.locale, {
           maximumFractionDigits: this.options.precision,
           minimumFractionDigits: this.options.precision,

@@ -34,7 +34,7 @@ export default {
     "v-text-field-negative-money": NegativeMoney,
   },
   data: () => ({
-    value: "-123456789.0", // 1.23 or "1.23" or "" or null
+    value: -123456789.0, // 1.23 or "1.23" or "" or null
     label: "Negative Money",
     disabled: false,
     signal: "",
