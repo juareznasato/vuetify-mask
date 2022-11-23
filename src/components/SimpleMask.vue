@@ -5,7 +5,10 @@
       v-bind:label="label"
       v-bind="properties",
       v-on:click:append-outer="$emit('click:append-outer')"
+      v-on:click:append="$emit('click:append')"
       v-on:click:prepend="$emit('click:preprend')"
+      v-on:click:prepend-inner="$emit('click:preprend-inner')"
+      v-on:click:clear="$emit('click:clear')"
       v-bind:maxlength="options.inputMask.length"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
