@@ -3,7 +3,9 @@
     <v-text-field
       v-model="cmpValue"
       v-bind:label="label"
-      v-bind="properties"
+      v-bind="properties",
+      v-on:click:append-outer="$emit('click:append-outer')"
+      v-on:click:prepend="$emit('click:preprend')"
       v-bind:maxlength="options.inputMask.length"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
