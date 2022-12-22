@@ -52,7 +52,9 @@ export default {
       },
     },
   },
-  data: () => ({}),
+  data: () => ({
+    block: false,
+  }),
   /*
    v-model="cmpValue": Dessa forma, ao digitar, o valor é atualizado automaticamente no componente pai.
    O valor digitado entra pelo newValue do Set é emitido para o componente pai, retorna pelo get e pára.
@@ -75,6 +77,12 @@ export default {
           value = value * -1;
           this.$emit("input", value);
           this.$emit("signal", "-");
+          this.block = true;
+        } else {
+          if (!this.block) {
+            this.$emit("signal", "+");
+          }
+          this.block = false;
         }
         value = Number(value).toLocaleString(this.options.locale, {
           maximumFractionDigits: this.options.precision,
