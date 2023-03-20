@@ -44,6 +44,7 @@ export default {
           length: 11,
           precision: 2,
           empty: null,
+          allowNegative: false
         };
       },
     },
@@ -76,9 +77,14 @@ export default {
       }
       return value;
     },
-
     machineFormat(value) {
       if (value) {
+        // If we are allowing negative numbers
+        // and the user starts typing with '-',
+        // allow the character as valid
+        if (this.options.allowNegative && value === '-') {
+          return '-';
+        }
         value = this.clearNumber(value);
         // Ajustar quantidade de zeros à esquerda
         value = value.padStart(parseInt(this.options.precision) + 1, "0");
@@ -121,22 +127,33 @@ export default {
             } else {
               result = result + arrayValue[i];
             }
+          // allow negative numbers to be passed
+          // when the first char is '-'
+          } else if (this.options.allowNegative && i === 0 && arrayValue[0] === "-") {
+            result = result + arrayValue[i];
           }
         }
       }
       return result;
     },
-
     keyPress($event) {
       // console.log($event.keyCode); //keyCodes value
       let keyCode = $event.keyCode ? $event.keyCode : $event.which;
-      // if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
       if (keyCode < 48 || keyCode > 57) {
-        // 46 is dot
+        // 46 is dot!
+
+        // key pressed is negative...
+        if (this.options.allowNegative && keyCode === 45) {
+          let curVal = this.machineFormat(this.value);
+          // if the value was positive, flip it to negative
+          if (curVal > 0) {
+            this.cmpValue = curVal * -1;
+          }
+        }
         $event.preventDefault();
+        // 46 is dot
       }
     },
-
     isInteger(value) {
       let result = false;
       if (Number.isInteger(parseInt(value))) {
@@ -144,13 +161,11 @@ export default {
       }
       return result;
     },
-
     focus() {
       setTimeout(() => {
         this.$refs.ref.focus();
       }, 500);
     },
-    
   },
 };
 </script>
