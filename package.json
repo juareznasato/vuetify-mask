@@ -13,7 +13,7 @@
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "main": "index.js",
+  "main": "src/components/index.js",
   "devDependencies": {
     "@mdi/font": "^5.9.55",
     "@testing-library/user-event": "^14.4.3",
