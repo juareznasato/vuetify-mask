@@ -58,6 +58,9 @@ export default {
     allowNegative() {
       return this.options.allowNegative;
     },
+    precision() {
+      return this.options.precision;
+    },
     cmpValue: {
       get: function() {
         return this.humanFormat(this.value);
@@ -68,10 +71,10 @@ export default {
     },
     maxLength() {
       if (this.allowNegative) {
-        return this.options.length + this.options.precision + 1;
+        return this.options.length + this.precision + 1;
       }
 
-      return this.options.length + this.options.precision;
+      return this.options.length + this.precision;
     }
   },
   watch: {},
@@ -79,8 +82,8 @@ export default {
     humanFormat: function(value) {
       if (value || value === 0) {
         value = Number(value).toLocaleString(this.options.locale, {
-          maximumFractionDigits: this.options.precision,
-          minimumFractionDigits: this.options.precision
+          maximumFractionDigits: this.precision,
+          minimumFractionDigits: this.precision
         });
       } else {
         value = this.options.empty;
@@ -111,10 +114,10 @@ export default {
         (value.startsWith("-") || Object.is(value, -0))
       ) {
         result = value.substring(1, value.length);
-        result = result.padStart(parseInt(this.options.precision) + 1, "0");
+        result = result.padStart(parseInt(this.precision) + 1, "0");
         result = "-" + result;
       } else {
-        result = value.padStart(parseInt(this.options.precision) + 1, "0");
+        result = value.padStart(parseInt(this.precision) + 1, "0");
       }
 
       return result;
@@ -122,31 +125,21 @@ export default {
 
     // Incluir ponto na casa correta, conforme a precisão configurada
     insertPoint(value) {
-      let result = "";
+      const length = value.length;
+      const left = value.substring(0, length - parseInt(this.precision));
+      const right = value.substring(length - parseInt(this.precision), length);
 
-      result =
-        value.substring(0, value.length - parseInt(this.options.precision)) +
-        "." +
-        value.substring(
-          value.length - parseInt(this.options.precision),
-          value.length
-        );
-
-      return result;
+      return `${left}.${right}`;
     },
 
     // Retira todos os caracteres não numéricos e zeros à esquerda
     clearNumber: function(value) {
-      const isNegativeZero = Object.is(value, -0);
       let result = "";
-      if (value || (this.allowNegative && isNegativeZero)) {
+
+      if (value || (this.allowNegative && value === 0)) {
         let flag = false;
-        let arrayValue;
-        if (this.allowNegative && isNegativeZero) {
-          arrayValue = ["-", "0"];
-        } else {
-          arrayValue = value.toString().split("");
-        }
+        let arrayValue = this.valueToArray(value);
+
         for (var i = 0; i < arrayValue.length; i++) {
           if (this.isInteger(arrayValue[i])) {
             if (!flag) {
@@ -170,7 +163,15 @@ export default {
           }
         }
       }
+
       return result;
+    },
+    valueToArray(value) {
+      if (this.allowNegative && Object.is(value, -0)) {
+        return ["-", "0"];
+      } else {
+        return value.toString().split("");
+      }
     },
     keyPress($event) {
       let keyCode = $event.keyCode ? $event.keyCode : $event.which;
