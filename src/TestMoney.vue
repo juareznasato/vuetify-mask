@@ -31,11 +31,29 @@
         : ""
     }}
     <br />
-    <v-btn v-on:click="$refs.ref.focus()" small>Focus</v-btn>
-    <v-btn v-on:click="disabled = !disabled" small>{{
-      disabled ? "Enabled" : "Disabled"
-    }}</v-btn>
-    <v-btn v-on:click="allowNegative = !allowNegative" small>
+    <v-btn
+      v-on:click="$refs.ref.focus()"
+      x-small
+      depressed
+      outlined
+      class="mr-1"
+      >Focus</v-btn
+    >
+    <v-btn
+      v-on:click="disabled = !disabled"
+      x-small
+      class="mr-1"
+      depressed
+      outlined
+      >{{ disabled ? "Enabled" : "Disabled" }}</v-btn
+    >
+    <v-btn
+      v-on:click="allowNegative = !allowNegative"
+      x-small
+      class="mr-1"
+      depressed
+      outlined
+    >
       {{ allowNegative ? "Disallow negative" : "Allow negative" }}
     </v-btn>
   </div>

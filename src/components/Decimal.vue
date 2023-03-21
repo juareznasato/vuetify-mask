@@ -4,7 +4,7 @@
       v-model="cmpValue"
       v-bind:label="label"
       v-bind="properties"
-      v-bind:maxlength="options.length + options.precision"
+      v-bind:maxlength="maxLength"
       v-on:keypress="keyPress"
       v-on:blur="$emit('blur')"
       v-on:change="$emit('change')"
@@ -24,17 +24,17 @@ export default {
   props: {
     value: {
       type: [String, Number],
-      default: "0",
+      default: "0"
     },
     label: {
       type: String,
-      default: "",
+      default: ""
     },
     properties: {
       type: Object,
       default: function() {
         return {};
-      },
+      }
     },
     options: {
       type: Object,
@@ -46,8 +46,8 @@ export default {
           empty: null,
           allowNegative: false
         };
-      },
-    },
+      }
+    }
   },
   data: () => ({}),
   /*
@@ -55,14 +55,24 @@ export default {
    O valor digitado entra pelo newValue do Set é emitido para o componente pai, retorna pelo get e pára.
   */
   computed: {
+    allowNegative() {
+      return this.options.allowNegative;
+    },
     cmpValue: {
       get: function() {
         return this.humanFormat(this.value);
       },
       set: function(newValue) {
         this.$emit("input", this.machineFormat(newValue));
-      },
+      }
     },
+    maxLength() {
+      if (this.allowNegative) {
+        return this.options.length + this.options.precision + 1;
+      }
+
+      return this.options.length + this.options.precision;
+    }
   },
   watch: {},
   methods: {
@@ -70,32 +80,20 @@ export default {
       if (value || value === 0) {
         value = Number(value).toLocaleString(this.options.locale, {
           maximumFractionDigits: this.options.precision,
-          minimumFractionDigits: this.options.precision,
+          minimumFractionDigits: this.options.precision
         });
       } else {
         value = this.options.empty;
       }
+
       return value;
     },
     machineFormat(value) {
-      if (value) {
-        // If we are allowing negative numbers
-        // and the user starts typing with '-',
-        // allow the character as valid
-        if (this.options.allowNegative && value === '-') {
-          return '-';
-        }
+      if (value || (this.allowNegative && Object.is(value, -0))) {
         value = this.clearNumber(value);
-        // Ajustar quantidade de zeros à esquerda
-        value = value.padStart(parseInt(this.options.precision) + 1, "0");
-        // Incluir ponto na casa correta, conforme a precisão configurada
-        value =
-          value.substring(0, value.length - parseInt(this.options.precision)) +
-          "." +
-          value.substring(
-            value.length - parseInt(this.options.precision),
-            value.length
-          );
+        value = this.fillZeros(value);
+        value = this.insertPoint(value);
+
         if (value === "") {
           value = this.options.empty;
         }
@@ -104,13 +102,51 @@ export default {
       }
       return value;
     },
+    // Ajustar quantidade de zeros à esquerda
+    fillZeros(value) {
+      let result = "";
+
+      if (
+        this.allowNegative &&
+        (value.startsWith("-") || Object.is(value, -0))
+      ) {
+        result = value.substring(1, value.length);
+        result = result.padStart(parseInt(this.options.precision) + 1, "0");
+        result = "-" + result;
+      } else {
+        result = value.padStart(parseInt(this.options.precision) + 1, "0");
+      }
+
+      return result;
+    },
+
+    // Incluir ponto na casa correta, conforme a precisão configurada
+    insertPoint(value) {
+      let result = "";
+
+      result =
+        value.substring(0, value.length - parseInt(this.options.precision)) +
+        "." +
+        value.substring(
+          value.length - parseInt(this.options.precision),
+          value.length
+        );
+
+      return result;
+    },
 
     // Retira todos os caracteres não numéricos e zeros à esquerda
     clearNumber: function(value) {
+      const isNegativeZero = Object.is(value, -0);
       let result = "";
-      if (value) {
+      if (value || (this.allowNegative && isNegativeZero)) {
         let flag = false;
-        let arrayValue = value.toString().split("");
+        let arrayValue;
+        if (this.allowNegative && isNegativeZero) {
+          arrayValue = ["-", "0"];
+        } else {
+          arrayValue = value.toString().split("");
+        }
         for (var i = 0; i < arrayValue.length; i++) {
           if (this.isInteger(arrayValue[i])) {
             if (!flag) {
@@ -127,9 +163,9 @@ export default {
             } else {
               result = result + arrayValue[i];
             }
-          // allow negative numbers to be passed
-          // when the first char is '-'
-          } else if (this.options.allowNegative && i === 0 && arrayValue[0] === "-") {
+            // allow negative numbers to be passed
+            // when the first char is '-'
+          } else if (this.allowNegative && i === 0 && arrayValue[0] === "-") {
             result = result + arrayValue[i];
           }
         }
@@ -137,21 +173,22 @@ export default {
       return result;
     },
     keyPress($event) {
-      // console.log($event.keyCode); //keyCodes value
       let keyCode = $event.keyCode ? $event.keyCode : $event.which;
+
       if (keyCode < 48 || keyCode > 57) {
         // 46 is dot!
+        // 45 is minus!
 
-        // key pressed is negative...
-        if (this.options.allowNegative && keyCode === 45) {
-          let curVal = this.machineFormat(this.value);
-          // if the value was positive, flip it to negative
-          if (curVal > 0) {
-            this.cmpValue = curVal * -1;
+        if (this.allowNegative && keyCode === 45) {
+          let curVal = this.humanFormat(this.value);
+
+          if (curVal == null) {
+            this.cmpValue = -0;
+          } else if (!curVal.includes("-")) {
+            this.cmpValue = `-${curVal}`;
           }
         }
         $event.preventDefault();
-        // 46 is dot
       }
     },
     isInteger(value) {
@@ -165,7 +202,7 @@ export default {
       setTimeout(() => {
         this.$refs.ref.focus();
       }, 500);
-    },
-  },
+    }
+  }
 };
 </script>
